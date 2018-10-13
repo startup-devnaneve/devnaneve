@@ -30,21 +30,20 @@
                         <div class="col-md-4 col-sm-6 col-md-offset-4 col-sm-offset-3">
                             <form method="#" action="#">
                                 <div class="card card-login card-hidden">
-                                    <div class="card-header text-center" data-background-color="blue">
-                                        <h4 class="card-title">Login</h4>
-                                        
+                                    <div class="card-header text-center" data-background-color="orange">
+                                        <h4 class="card-title">Login</h4>                                        
                                     </div>
+                                    <p class="category text-center">
+                                        Bem vindo ao sistema, faça login para continuar.
+                                    </p>
                                     <div class="card-content">
-                                        <div class="input-group">
-                                            
-                                        </div>
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">email</i>
                                             </span>
                                             <div class="form-group label-floating">
-                                                <label class="control-label">Endereço de email</label>
-                                                <input type="email" class="form-control">
+                                                <label class="control-label">E-mail</label>
+                                                <input type="email" name="email_usu" id="email_usu" class="form-control"/>
                                             </div>
                                         </div>
                                         <div class="input-group">
@@ -53,12 +52,12 @@
                                             </span>
                                             <div class="form-group label-floating">
                                                 <label class="control-label">Senha</label>
-                                                <input type="password" class="form-control">
+                                                <input type="password" name="senha_usu" id="senha_usu" class="form-control"/>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="footer text-center">
-                                        <button type="submit" class="btn btn-success">Entrar</button>
+                                        <button type="submit" name="btn-entrar" class="btn btn-warning btn-lg"><i class="material-icons">input</i> Entrar</button>
                                     </div>
                                 </div>
                             </form>

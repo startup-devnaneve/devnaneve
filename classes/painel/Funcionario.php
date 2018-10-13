@@ -190,4 +190,26 @@ class Funcionario {
         return $retorno;
     }
 
+    /**
+     * Função para autenticar login do funcionário
+     * @param $email_fun, $senha_fun
+     */
+    public function autenticar_funcionario($email_fun, $senha_fun) {
+        require_once("../conexao/Conexao.php");
+
+        try {
+            $query = "SELECT * FROM funcionario f INNER JOIN grupo g ON f.codigo_gru = g.codigo_gru WHERE f.ativo_fun = 1 AND f.email_fun = {$email_fun} AND f.senha_fun = {$senha_fun}";
+
+            $stmt    = $pdo->prepare($query);            
+            $retorno = $stmt->fetchAll();
+
+            $pdo = null;
+        } catch(PDOException $e) {
+            echo $e->getMessage();
+            return false;
+        }
+
+        return $retorno;
+    }
+
 }

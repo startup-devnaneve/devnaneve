@@ -53,8 +53,7 @@ class Funcionario {
     }
 
     /** 
-     * Função para inserir um novo funcionário 
-     * @param $nome_fun, $email_fun, $senha_fun, $codigo_gru, $codigo_est, $ativo_fun
+     * Função para inserir um novo funcionário
      * */
     public function inserir_funcionario() {
         try {
@@ -75,8 +74,7 @@ class Funcionario {
     }
 
     /**
-     * Função para realizar a alteração dos dados de um funcionário
-     * @param $codigo_fun, $nome_fun, $email_fun, $senha_fun, $codigo_gru, $codigo_est, $ativo_fun
+     * Função para realizar a alteração dos dados de um funcionário      
      */
     public function alterar_funcionario($codigo_fun) {
         try {
@@ -100,7 +98,6 @@ class Funcionario {
 
     /**
      * Função para inativar um funcionário
-     * @param $codigo_fun
      */
     public function inativar_funcionario($codigo_fun) {
         try {
@@ -136,14 +133,12 @@ class Funcionario {
     
     /**
      * Função para buscar um funcionário
-     * @param $codigo_fun
      */
     public function buscar_funcionario($codigo_fun) {
         try {
 			$query = "SELECT * FROM $this->tabela f INNER JOIN grupo g ON f.codigo_gru = g.codigo_gru WHERE codigo_fun = :codigo_fun AND f.ativo_fun = 1";
 
 			$stmt = DB::prepare($query);
-
 			$stmt->bindParam(":codigo_fun", $codigo_fun);
 
 			$stmt->execute();
@@ -155,14 +150,12 @@ class Funcionario {
 
     /**
      * Função para autenticar login do funcionário
-     * @param $email_fun, $senha_fun
      */
     public function autenticar_funcionario($email_fun, $senha_fun) {
         try {
             $query = "SELECT * FROM $this->tabela f INNER JOIN grupo g ON f.codigo_gru = g.codigo_gru WHERE email_fun = :email_fun AND senha_fun = :senha_fun AND f.ativo_fun = 1";
 
             $stmt = DB::prepare($query);
-
             $stmt->bindParam(":email_fun", $this->getEmail_fun());
             $stmt->bindParam(":senha_fun", $this->getSenha_fun());
 

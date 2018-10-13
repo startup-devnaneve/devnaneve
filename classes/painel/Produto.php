@@ -44,7 +44,6 @@ class Produto {
 
     /**
      * Função para inserir um novo produto
-     * @param $nome_pro, $quantidade_pro, $valor_pro, $ativo_pro
      */
     public function inserir_produto() {
         try {
@@ -67,7 +66,6 @@ class Produto {
 
     /**
      * Função para alterar os dados de um produto
-     * @param $codigo_pro, $nome_pro, $quantidade_pro, $valor_pro, $ativo_pro
      */
     public function alterar_produto($codigo_pro) {
         try {
@@ -91,7 +89,6 @@ class Produto {
 
     /**
      * Função para inativar um produto
-     * @param $codigo_pro
      */
     public function inativar_produto($codigo_pro) {
         try {
@@ -127,7 +124,6 @@ class Produto {
 
     /**
      * Função para buscar um registro de produto
-     * @param $codigo_pro
      */
     public function buscar_produto($codigo_pro) {
         try {

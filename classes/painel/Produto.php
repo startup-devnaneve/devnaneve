@@ -1,6 +1,11 @@
 <?php
 
+require_once "../conexao/Conexao.php";
+
 class Produto {
+
+    /** Tabela */
+    private $tabela = "produto";
     
     /** Atributos */
     private $nome_pro,
@@ -9,31 +14,31 @@ class Produto {
             $ativo_pro;
 
     /** Métodos Especiais */
-    function getNome_pro() {
+    public function getNome_pro() {
         return $this->nome_pro;
     }
-    function setNome_pro($nome_pro) {
+    public function setNome_pro($nome_pro) {
         $this->nome_pro = $nome_pro;
     }
 
-    function getQuantidade_pro() {
+    public function getQuantidade_pro() {
         return $this->quantidade_pro;
     }
-    function setQuantidade_pro($quantidade_pro) {
+    public function setQuantidade_pro($quantidade_pro) {
         $this->quantidade_pro = $quantidade_pro;
     }
 
-    function getValor_pro() {
+    public function getValor_pro() {
         return $this->valor_pro;
     }
-    function setValor_pro($valor_pro) {
+    public function setValor_pro($valor_pro) {
         $this->valor_pro = $valor_pro;
     }
 
-    function getAtivo_pro() {
+    public function getAtivo_pro() {
         return $this->ativo_pro;
     }
-    function setAtivo_pro($ativo_pro) {
+    public function setAtivo_pro($ativo_pro) {
         $this->ativo_pro = $ativo_pro;
     }
 
@@ -42,26 +47,18 @@ class Produto {
      * @param $nome_pro, $quantidade_pro, $valor_pro, $ativo_pro
      */
     public function inserir_produto() {
-        require_once("../conexao/Conexao.php");
-
         try {
-            $pdo->exec('SET NAMES UTF8');
-
-            $query = "INSERT INTO produto(nome_pro, quantidade_pro, valor_pro, ativo_pro) 
+            $query = "INSERT INTO $this->tabela(nome_pro, quantidade_pro, valor_pro, ativo_pro) 
                       VALUES(:nome_pro, :quantidade_pro, :valor_pro, :ativo_pro)";
 
-            $parametros = array(
-                ":nome_pro"   => $this->nome_pro,
-                ":quantidade" => $this->quantidade_pro,
-                ":valor_pro"  => $this->valor_pro,
-                ":ativo_pro"  => 1
-            );
+            $stmt = DB::prepare($query);
 
-            $stmt = $pdo->prepare($query);
-            $stmt->execute($parametros);
+            $stmt->bindParam(":nome_pro", $this->getNome_pro());
+            $stmt->bindParam(":quantidade_pro", $this->getQuantidade_pro());
+            $stmt->bindParam(":valor_pro", $this->getValor_pro());
+            $stmt->bindParam(":ativo_pro", $this->getAtivo_pro());
 
-            $pdo = null;
-            return true;
+            echo json_encode($stmt->execute());
         } catch(PDOException $e) {
             echo $e->getMessage();
             return false;
@@ -72,31 +69,23 @@ class Produto {
      * Função para alterar os dados de um produto
      * @param $codigo_pro, $nome_pro, $quantidade_pro, $valor_pro, $ativo_pro
      */
-    public function alterar_produto() {
-        require_once("../conexao/Conexao.php");
-
+    public function alterar_produto($codigo_pro) {
         try {
-            $pdo->exec('SET NAMES UTF8');
-
-            $query = "UPDATE produto 
-                      SET nome_pro = :nome_pro, quantidade_pro = :quantidade_pro, valor_pro = :valor_pro, ativo_pro = :ativo_pro 
+            $query = "UPDATE $this->tabela 
+                      SET nome_pro = :nome_pro, quantidade_pro = :quantidade_pro, valor_pro = :valor_pro 
                       WHERE codigo_pro = :codigo_pro";
 
-            $parametros = array(
-                "codigo_pro"      => $this->codigo_pro,
-                ":nome_pro"       => $this->nome_pro,
-                ":quantidade_pro" => $this->quantidade_pro,
-                ":valor_pro"      => $this->valor_pro
-            );
+            $stmt = DB::prepare($query);
 
-            $stmt = $pdo->prepare($query);
-            $stmt->execute($parametros);
+            $stmt->bindParam(":codigo_pro", $codigo_pro);
+            $stmt->bindParam(":nome_pro", $this->getNome_pro());
+            $stmt->bindParam(":quantidade_pro", $this->getQuantidade_pro());
+            $stmt->bindParam(":valor_pro", $this->getValor_pro());
+            $stmt->bindParam(":ativo_pro", $this->getAtivo_pro());
 
-            $pdo = null;
-            return true;
+            echo json_encode($stmt->execute());
         } catch(PDOException $e) {
             echo $e->getMessage();
-            return false;
         }
     }
 
@@ -104,24 +93,19 @@ class Produto {
      * Função para inativar um produto
      * @param $codigo_pro
      */
-    public function inativar_produto() {
-        require_once("../conexao/Conexao.php");
-
+    public function inativar_produto($codigo_pro) {
         try {
-            $query = "UPDATE produto SET ativo_pro = 0 WHERE codigo_pro = :codigo_pro";
+            $query = "UPDATE $this->tabela 
+                      SET ativo_pro = 0
+                      WHERE codigo_pro = :codigo_pro";
 
-            $paramentros = array(
-                "codigo_pro" => $this->codigo_pro
-            );
+            $stmt = DB::prepare($query);
+            
+            $stmt->bindParam(":codigo_pro", $codigo_pro);
 
-            $stmt = $pdo->prepare($query);
-            $stmt->execute($parametros);
-
-            $pdo = null;
-            return true;
+            echo json_encode($stmt->execute());
         } catch(PDOException $e) {
             echo $e->getMessage();
-            return false;
         }
     }
     
@@ -129,22 +113,16 @@ class Produto {
      * Função para listar os produtos cadastrados
      */
     public function listar_produtos() {
-        require_once("../conexao/Conexao.php");
-
         try {
-            $query = "SELECT * FROM funcionarios f INNER JOIN grupo g ON f.codigo_gru = g.codigo_gru WHERE ativo_fun = 1";
+            $query = "SELECT * FROM produto WHERE ativo_pro = 1";
+            
+            $stmt = DB::prepare($query);
 
-            $stmt = $pdo->prepare($query);
-            $stmt->execute();
-
-            $retorno = $stmt->fetchAll();
-            $pdo = null;
+			$stmt->execute();
+			return $stmt->fetchAll();
         } catch(PDOException $e) {
             echo $e->getMessage();
-            return false;
         }
-
-        return $retorno;
     }
 
     /**
@@ -152,22 +130,18 @@ class Produto {
      * @param $codigo_pro
      */
     public function buscar_produto($codigo_pro) {
-        require_once("../conexao/Conexao.php");
-
         try {
-            $query = "SELECT * FROM produto WHERE ativo_pro = 1 AND codigo_pro = {$codigo_pro}";
+            $query = "SELECT * FROM produto WHERE codigo_pro = :codigo_pro AND ativo_pro = 1";
+            
+            $stmt = DB::prepare($query);
 
-            $stmt    = $pdo->prepare($query);
-            $stmt->execute();
+            $stmt->bindParam(":codigo_pro", $codigo_pro);
 
-            $retorno = $stmt->fetchAll();
-            $pdo = null;
+			$stmt->execute();
+			return $stmt->fetchAll();
         } catch(PDOException $e) {
             echo $e->getMessage();
-            return false;
         }
-
-        return $retorno;
     }
 
 }

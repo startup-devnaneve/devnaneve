@@ -1,7 +1,12 @@
 <?php
 
+require_once "../conexao/Conexao.php";
+
 class Funcionario {
     
+    /** Tabela */
+    private $tabela = "funcionario";
+
     /** Atributos */
     private $codigo_fun,
             $nome_fun,
@@ -12,45 +17,38 @@ class Funcionario {
             $ativo_fun;
 
     /** Métodos Especiais */
-    function setNome_fun() {
+    public function getNome_fun() {
         return $this->nome_fun;
     }
-    function getNome_fun($nome_fun) {
+    public function setNome_fun($nome_fun) {
         $this->nome_fun = $nome_fun;
     }
 
-    function getEmail_fun() {
+    public function getEmail_fun() {
         return $this->email_fun;
     }
-    function setEmail_fun($email_fun) {
+    public function setEmail_fun($email_fun) {
         $this->email_fun = $email_fun;
     }
 
-    function getSenha_fun() {
+    public function getSenha_fun() {
         return $this->senha_fun;
     }
-    function setSenha_fun($senha_fun) {
+    public function setSenha_fun($senha_fun) {
         $this->senha_fun = $senha_fun;
     }
 
-    function getCodigo_gru() {
+    public function getCodigo_gru() {
         return $this->codigo_gru;
     }
-    function setCodigo_gru($codigo_gru) {
+    public function setCodigo_gru($codigo_gru) {
         $this->codigo_gru = $codigo_gru;
     }
 
-    function getCodigo_est() {
-        return $this->codigo_gru;
-    }
-    function setCodigo_est($codigo_est) {
-        $this->codigo_est = $codigo_est;
-    }
-
-    function getAtivo_fun() {
+    public function getAtivo_fun() {
         return $this->ativo_fun;
     }
-    function setAtivo_fun($ativo_fun) {
+    public function setAtivo_fun($ativo_fun) {
         $this->ativo_fun = $ativo_fun;
     }
 
@@ -59,31 +57,20 @@ class Funcionario {
      * @param $nome_fun, $email_fun, $senha_fun, $codigo_gru, $codigo_est, $ativo_fun
      * */
     public function inserir_funcionario() {
-        require_once("../conexao/Conexao.php");
-
         try {
-            $pdo->exec('SET NAMES UTF8');
+            $query = "INSERT INTO $this->tabela(nome_fun, email_fun, senha_fun, codigo_gru, ativo_fun) 
+                      VALUES(:nome_fun, :email_fun, :senha_fun, :ativo_fun)";
             
-            $query = "INSERT INTO funcionario(nome_fun, email_fun, senha_fun, codigo_gru, codigo_est, ativo_fun) 
-                      VALUES(:nome_fun, :email_fun, :senha_fun, :codigo_gru, :codigo_est, :ativo_fun)";
+            $stmt = DB::prepare($query);
 
-            $parametros = array(
-                ":nome_fun"   => $this->nome_fun,
-                ":email_fun"  => $this->email_fun,
-                ":senha_fun"  => $this->senha_fun,
-                ":codigo_gru" => $this->codigo_gru,
-                ":codigo_est" => $this->codigo_est,
-                ":ativo_fun"  => 1
-            );
+            $stmt->bindParam(":nome_fun", $this->getNome_fun());
+            $stmt->bindParam(":email_fun", $this->getEmail_fun());
+            $stmt->bindParam(":senha_fun", $this->getSenha_fun());
+            $stmt->bindParam(":ativo_fun", $this->getAtivo_fun());
 
-            $stmt = $pdo->prepare($query);
-            $stmt->execute($parametros);
-
-            $pdo = null;
-            return true;
+            echo json_encode($stmt->execute());
         } catch(PDOException $e) {
             echo $e->getMessage();
-            return false;
         }
     }
 
@@ -91,34 +78,23 @@ class Funcionario {
      * Função para realizar a alteração dos dados de um funcionário
      * @param $codigo_fun, $nome_fun, $email_fun, $senha_fun, $codigo_gru, $codigo_est, $ativo_fun
      */
-    public function alterar_funcionario() {
-        require_once("../conexao/Conexao.php");
-
+    public function alterar_funcionario($codigo_fun) {
         try {
-            $pdo->exec('SET NAMES UTF8');
-            
-            $query = "UPDATE funcionario 
-                      SET nome_fun = :nome_fun, email_fun = :email_fun, senha_fun = :senha_fun, codigo_gru = :codigo_gru, codigo_est = :codigo_est 
+            $query = "UPDATE $this->tabela 
+                      SET nome_fun = :nome_fun, email_fun = : email_fun, senha_fun = :senha_fun 
                       WHERE codigo_fun = :codigo_fun";
+            
+            $stmt = DB::prepare($query);
 
-            $parametros = array(
-                ":codigo_fun" => $this->codigo_fun,
-                ":nome_fun"   => $this->nome_fun,
-                ":email_fun"  => $this->email_fun,
-                ":senha_fun"  => $this->senha_fun,
-                ":codigo_gru" => $this->codigo_gru,
-                ":codigo_est" => $this->codigo_est,
-                ":ativo_fun"  => 1
-            );
+            $stmt->bindParam(":codigo_fun", $codigo_fun);
+            $stmt->bindParam(":nome_fun", $this->getNome_fun());
+            $stmt->bindParam(":email_fun", $this->getEmail_fun());
+            $stmt->bindParam(":senha_fun", $this->getSenha_fun());
+            $stmt->bindParam(":ativo_fun", $this->getAtivo_fun());
 
-            $stmt = $pdo->prepare($query);
-            $stmt->execute($parametros);
-
-            $pdo = null;
-            return true;
+            echo json_encode($stmt->execute());
         } catch(PDOException $e) {
             echo $e->getMessage();
-            return false;
         }
     }
 
@@ -126,24 +102,19 @@ class Funcionario {
      * Função para inativar um funcionário
      * @param $codigo_fun
      */
-    public function inativar_funcionario() {
-        require_once("../conexao/Conexao.php");
-
+    public function inativar_funcionario($codigo_fun) {
         try {
-            $query = "UPDATE funcionario SET ativo_fun = 0 WHERE codigo_fun = :codigo_fun";
+            $query = "UPDATE $this->tabela 
+                      SET ativo_con = 0 
+                      WHERE codigo_fun = :codigo_fun";
+            
+            $stmt = DB::prepare($query);
 
-            $paramentros = array(
-                "codigo_fun" => $this->codigo_fun
-            );
+            $stmt->bindParam(":codigo_fun", $codigo_fun);
 
-            $stmt = $pdo->prepare($query);
-            $stmt->execute($parametros);
-
-            $pdo = null;
-            return true;
+            echo json_encode($stmt->execute());
         } catch(PDOException $e) {
             echo $e->getMessage();
-            return false;
         }
     }
 
@@ -151,22 +122,16 @@ class Funcionario {
      * Função para listar todos os funcionários
      */
     public function listar_funcionarios() {
-        require_once("../conexao/Conexao.php");
-
         try {
-            $query = "SELECT * FROM funcionarios f INNER JOIN grupo g ON f.codigo_gru = g.codigo_gru WHERE ativo_fun = 1";
+            $query = "SELECT * FROM $this->tabela f INNER JOIN grupo g ON f.codigo_gru = g.codigo_gru WHERE f.ativo_fun = 1";
 
-            $stmt = $pdo->prepare($query);
-            $stmt->execute();
+			$stmt = DB::prepare($query);
 
-            $retorno = $stmt->fetchAll();
-            $pdo = null;
-        } catch(PDOException $e) {
+			$stmt->execute();
+			return $stmt->fetchAll();
+		} catch (PDOException $e) {
             echo $e->getMessage();
-            return false;
-        }
-
-        return $retorno;
+		}
     }
     
     /**
@@ -174,22 +139,18 @@ class Funcionario {
      * @param $codigo_fun
      */
     public function buscar_funcionario($codigo_fun) {
-        require_once("../conexao/Conexao.php");
-
         try {
-            $query = "SELECT * FROM funcionarios f INNER JOIN grupo g ON f.codigo_gru = g.codigo_gru WHERE ativo_fun = 1 AND codigo_fun = {$codigo_fun}";
+			$query = "SELECT * FROM $this->tabela f INNER JOIN grupo g ON f.codigo_gru = g.codigo_gru WHERE codigo_fun = :codigo_fun AND f.ativo_fun = 1";
 
-            $stmt = $pdo->prepare($query);
-            $stmt->execute();
+			$stmt = DB::prepare($query);
 
-            $retorno = $stmt->fetchAll();
-            $pdo = null;
-        } catch(PDOException $e) {
-            echo $e->getMessage();
-            return false;
-        }
+			$stmt->bindParam(":codigo_fun", $codigo_fun);
 
-        return $retorno;
+			$stmt->execute();
+			return $stmt->fetch();
+		} catch (PDOException $e) {
+			echo $e->getMessage();
+		}
     }
 
     /**
@@ -197,21 +158,33 @@ class Funcionario {
      * @param $email_fun, $senha_fun
      */
     public function autenticar_funcionario($email_fun, $senha_fun) {
-        require_once("../conexao/Conexao.php");
-
         try {
-            $query = "SELECT * FROM funcionario f INNER JOIN grupo g ON f.codigo_gru = g.codigo_gru WHERE f.ativo_fun = 1 AND f.email_fun = {$email_fun} AND f.senha_fun = {$senha_fun}";
+            $query = "SELECT * FROM $this->tabela f INNER JOIN grupo g ON f.codigo_gru = g.codigo_gru WHERE email_fun = :email_fun AND senha_fun = :senha_fun AND f.ativo_fun = 1";
 
-            $stmt    = $pdo->prepare($query);            
-            $retorno = $stmt->fetchAll();
+            $stmt = DB::prepare($query);
 
-            $pdo = null;
+            $stmt->bindParam(":email_fun", $this->getEmail_fun());
+            $stmt->bindParam(":senha_fun", $this->getSenha_fun());
+
+            $stmt->execute();
+
+            if($stmt->rowCount() === 1) {
+                session_start();
+
+                $dados = $stmt->fetch(PDO::FETCH_OBJ);
+
+                $_SESSION["codigo_fun"] = $dados->codigo_fun;
+                $_SESSION["nome_fun"]   = $dados->nome_fun;
+                $_SESSION["email_fun"]  = $dados->email_fun;
+                $_SESSION["codigo_gru"] = $dados->codigo_gru;
+
+                return true;
+            } else {
+                return false;
+            }
         } catch(PDOException $e) {
             echo $e->getMessage();
-            return false;
         }
-
-        return $retorno;
     }
 
 }

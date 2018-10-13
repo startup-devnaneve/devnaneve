@@ -91,5 +91,21 @@ class Pulseira {
             echo $e->getMessage();
         }
     }
+
+    /**
+     * Função para listar as pulseiras cadastradas
+     */
+    public function listar_pulseiras() {
+        try {
+            $query = "SELECT * FROM $this->tabela WHERE ativo_pul = 1";
+
+            $stmt = DB::prepare($query);
+
+            $stmt->execute();
+            return $stmt->fetchAll();
+        } catch(PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
     
 }

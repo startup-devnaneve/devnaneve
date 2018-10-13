@@ -3,7 +3,8 @@
 class Funcionario {
     
     /** Atributos */
-    private $nome_fun,
+    private $codigo_fun,
+            $nome_fun,
             $email_fun,
             $senha_fun,
             $codigo_gru,
@@ -82,8 +83,111 @@ class Funcionario {
             return true;
         } catch(PDOException $e) {
             echo $e->getMessage();
-            return false;                
+            return false;
         }
+    }
+
+    /**
+     * Função para realizar a alteração dos dados de um funcionário
+     * @param $codigo_fun, $nome_fun, $email_fun, $senha_fun, $codigo_gru, $codigo_est, $ativo_fun
+     */
+    public function alterar_funcionario() {
+        require_once("../conexao/Conexao.php");
+
+        try {
+            $pdo->exec('SET NAMES UTF8');
+            
+            $query = "UPDATE funcionario 
+                      SET nome_fun = :nome_fun, email_fun = :email_fun, senha_fun = :senha_fun, codigo_gru = :codigo_gru, codigo_est = :codigo_est 
+                      WHERE codigo_fun = :codigo_fun";
+
+            $parametros = array(
+                ":codigo_fun" => $this->codigo_fun,
+                ":nome_fun"   => $this->nome_fun,
+                ":email_fun"  => $this->email_fun,
+                ":senha_fun"  => $this->senha_fun,
+                ":codigo_gru" => $this->codigo_gru,
+                ":codigo_est" => $this->codigo_est,
+                ":ativo_fun"  => 1
+            );
+
+            $stmt = $pdo->prepare($query);
+            $stmt->execute($parametros);
+
+            $pdo = null;
+            return true;
+        } catch(PDOException $e) {
+            echo $e->getMessage();
+            return false;
+        }
+    }
+
+    /**
+     * Função para inativar um funcionário
+     * @param $codigo_fun
+     */
+    public function inativar_funcionario() {
+        require_once("../conexao/Conexao.php");
+
+        try {
+            $query = "UPDATE funcionario SET ativo_fun = 0 WHERE codigo_fun = :codigo_fun";
+
+            $paramentros = array(
+                "codigo_fun" => $this->codigo_fun
+            );
+
+            $stmt = $pdo->prepare($query);
+            $stmt->execute($parametros);
+
+            $pdo = null;
+            return true;
+        } catch(PDOException $e) {
+            echo $e->getMessage();
+            return false;
+        }
+    }
+
+    /**
+     * Função para listar todos os funcionários
+     */
+    public function listar_funcionarios() {
+        require_once("../conexao/Conexao.php");
+
+        try {
+            $query = "SELECT * FROM funcionarios f INNER JOIN grupo g ON f.codigo_gru = g.codigo_gru WHERE ativo_fun = 1";
+
+            $stmt    = $pdo->prepare($query);            
+            $retorno = $stmt->fetchAll();
+
+            $pdo = null;
+        } catch(PDOException $e) {
+            echo $e->getMessage();
+            return false;
+        }
+
+        return $retorno;
+    }
+    
+    /**
+     * Função para buscar um funcionário
+     * @param $codigo_fun
+     */
+    public function buscar_funcionario($codigo_fun) {
+        require_once("../conexao/Conexao.php");
+
+        try {
+            $query = "SELECT * FROM funcionarios f INNER JOIN grupo g ON f.codigo_gru = g.codigo_gru WHERE ativo_fun = 1";
+
+            $stmt    = $pdo->prepare($query);            
+            $retorno = $stmt->fetchAll();
+
+            $pdo = null;
+        } catch(PDOException $e) {
+            echo $e->getMessage();
+            return false;
+        }
+
+        return $retorno;
     }
 
 }

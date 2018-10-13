@@ -156,9 +156,10 @@ class Funcionario {
         try {
             $query = "SELECT * FROM funcionarios f INNER JOIN grupo g ON f.codigo_gru = g.codigo_gru WHERE ativo_fun = 1";
 
-            $stmt    = $pdo->prepare($query);            
-            $retorno = $stmt->fetchAll();
+            $stmt = $pdo->prepare($query);
+            $stmt->execute();
 
+            $retorno = $stmt->fetchAll();
             $pdo = null;
         } catch(PDOException $e) {
             echo $e->getMessage();
@@ -176,11 +177,12 @@ class Funcionario {
         require_once("../conexao/Conexao.php");
 
         try {
-            $query = "SELECT * FROM funcionarios f INNER JOIN grupo g ON f.codigo_gru = g.codigo_gru WHERE ativo_fun = 1";
+            $query = "SELECT * FROM funcionarios f INNER JOIN grupo g ON f.codigo_gru = g.codigo_gru WHERE ativo_fun = 1 AND codigo_fun = {$codigo_fun}";
 
-            $stmt    = $pdo->prepare($query);            
+            $stmt = $pdo->prepare($query);
+            $stmt->execute();
+
             $retorno = $stmt->fetchAll();
-
             $pdo = null;
         } catch(PDOException $e) {
             echo $e->getMessage();

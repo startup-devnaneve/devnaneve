@@ -51,7 +51,6 @@ class Produto {
                       VALUES(:nome_pro, :quantidade_pro, :valor_pro, :ativo_pro)";
 
             $stmt = DB::prepare($query);
-
             $stmt->bindParam(":nome_pro", $this->getNome_pro());
             $stmt->bindParam(":quantidade_pro", $this->getQuantidade_pro());
             $stmt->bindParam(":valor_pro", $this->getValor_pro());
@@ -74,7 +73,6 @@ class Produto {
                       WHERE codigo_pro = :codigo_pro";
 
             $stmt = DB::prepare($query);
-
             $stmt->bindParam(":codigo_pro", $codigo_pro);
             $stmt->bindParam(":nome_pro", $this->getNome_pro());
             $stmt->bindParam(":quantidade_pro", $this->getQuantidade_pro());
@@ -96,8 +94,7 @@ class Produto {
                       SET ativo_pro = 0
                       WHERE codigo_pro = :codigo_pro";
 
-            $stmt = DB::prepare($query);
-            
+            $stmt = DB::prepare($query);        
             $stmt->bindParam(":codigo_pro", $codigo_pro);
 
             echo json_encode($stmt->execute());
@@ -130,7 +127,6 @@ class Produto {
             $query = "SELECT * FROM produto WHERE codigo_pro = :codigo_pro AND ativo_pro = 1";
             
             $stmt = DB::prepare($query);
-
             $stmt->bindParam(":codigo_pro", $codigo_pro);
 
 			$stmt->execute();

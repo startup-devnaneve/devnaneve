@@ -12,10 +12,10 @@ class Funcionario {
             $ativo_fun;
 
     /** Métodos Especiais */
-    function setNome_fun() {
+    function getNome_fun() {
         return $this->nome_fun;
     }
-    function getNome_fun($nome_fun) {
+    function setNome_fun($nome_fun) {
         $this->nome_fun = $nome_fun;
     }
 

@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- Mobile -->
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        
+        <!-- Responsividade -->
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+        
+        <meta charset="utf-8">
+        
+        <!-- Framework -->
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+		<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+		<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+        
+		<title></title>
+    </head>
+    <body>
+        
+        <!-- Login -->
+		<div data-role="page" id="one" style="background-color: #FFFFFF">
+			<div role="main" class="ui-content">
+				<form>
+                    <br><br>
+                    <center>
+                        <img url="https://i.imgur.com/W2U2bUH.png">
+                    </center>
+                    <br><br>
+                    <div style="padding: 3rem;">
+                        <label style="color:#FFD131; font-size: 30px;">CPF</label>
+                        <input type="text" name="cpf" id="cpf" style="font-size: 25px">
+                        <br>
+                        <label style="color:#FFD131; font-size: 30px;">Senha</label>
+                        <input type="text" name="senha" id="senha" style="font-size: 25px">
+                    </div>    
+                </form>
+				<center>
+                    <div style="width: 45%;">
+                    <p>
+                        <a href="#two" class="ui-btn ui-shadow ui-corner-all" data-transition="slideup" style="background-color: #FFD131 !important;">
+                            <span style="color: #FFFFFF; font-size: 30px;">Entrar</span>
+                        </a>
+                    </p>
+                    </div>
+                </center>
+			</div>
+		</div><!-- /Login -->
+        
+        <!-- Home -->
+		<div data-role="page" id="two" data-theme="a" style="background-color: #FFFFFF">
+            <div data-role="header" style="background-color: #FF8D0D; border: none; height: 55px;">
+                <a href="#menu" class="ui-nodisc-icon ui-btn ui-icon-bars ui-btn-icon-left ui-corner-all" style="background-color: #FF8D0D; color: white; border: none;font-size: 20px" data-transition="slide">Menu</a>
+				<h1 style="color: white;"></h1>
+                <a class="ui-btn ui-btn-icon-left ui-corner-all" style="background-color: #FF8D0D; color: white; border: none; border: none !important; font-size: 20px;text-align: right; padding-right: 1%">#37519</a>
+			</div>
+            
+            <div data-role="header" style="background-color: #F9A545; border: none; height: 40px;">
+                <a class="ui-btn ui-btn-icon-left ui-corner-all" style="background-color: #F9A545; color: white; border: none; border: none !important; font-size: 20px; color:#F6EFEF !important; padding: 1%;">Murillo Wolf Cavalheiro</a>
+                <h1 style="color: white; text-align: right;"></h1>
+                <a class="ui-btn ui-btn-icon-left ui-corner-all" style="background-color: #F9A545;; color: white; border: none; border: none !important; font-size: 20px; color:#F6EFEF !important; padding: 1%; padding-top: 1px">12/10/2018</a>
+            </div>
+
+			<div role="main" class="ui-content" style="padding-top: 10%;">
+                <div style="bottom: 0;padding: 1rem;">
+                    <label style="color: #003D5B;font-size: 25px;line-height: 0.01;">Total Gasto</label>
+                    <label style="color: #FF8D0D;font-size: 60px;margin: 0;">R$500,00</label>
+                </div>
+			</div>
+            
+            <center>
+                <div data-role="footer"data-position="fixed">
+                    <a href="#fecharConta" class="ui-btn ui-btn-inline" style="background-color: #FFD131; color: #FFFFFF; width: auto; font-size: 20px;">FECHAR CONTA</a>
+                    <a href="#one" class="ui-btn ui-btn-inline" style="background-color: #E8200C; color: white;width: auto; font-size: 20px;" data-transition="slidedown">SAIR</a>
+                </div>
+            </center>    
+		</div><!-- /Home -->
+        
+        <!-- Menu -->
+		<div data-role="page" id="menu" data-theme="a" style="background-color: #FFFFFF">
+            <div data-role="header" style="background-color: #FF8D0D; border: none; height: 55px;">
+                <a href="#two" class="ui-nodisc-icon ui-btn ui-icon-carat-l ui-btn-icon-left ui-corner-all" style="background-color: #FF8D0D; color: white; border: none;font-size: 20px" data-transition="slide" data-direction="reverse">Voltar</a>
+				<h1 style="color: white;"></h1>
+                <a class="ui-btn ui-btn-icon-left ui-corner-all" style="background-color: #FF8D0D; color: white; border: none; border: none !important; font-size: 20px;text-align: right; padding-right: 1%">#37519</a>
+			</div>
+            <div data-role="header" style="background-color: #F9A545; border: none; height: 40px;">
+                <a class="ui-btn ui-btn-icon-left ui-corner-all" style="background-color: #F9A545; color: white; border: none; border: none !important; font-size: 20px; color:#F6EFEF !important; padding: 1%;">Murillo Wolf Cavalheiro</a>
+                <h1 style="color: white; text-align: right;"></h1>
+                <a class="ui-btn ui-btn-icon-left ui-corner-all" style="background-color: #F9A545;; color: white; border: none; border: none !important; font-size: 20px; color:#F6EFEF !important; padding: 1%; padding-top: 1px">12/10/2018</a>
+            </div>
+			<div role="main" class="ui-content">
+                <div style="padding-left: 5%; padding-right: 5%; padding-top: 5%;">
+                    <ul data-role="listview">
+                        <li>
+                            <a href="#produto" style="font-size: 35px" data-transition="slide">Produtos</a>
+                        </li>
+                        <li>
+                            <a href="#grupo" style="font-size: 30px" data-transition="slide">Grupo/Familía</a>
+                        </li>
+                        <li>
+                            <a href="#limite" style="font-size: 35px" data-transition="slide">Limite</a>
+                        </li>
+                        <li>
+                            <a href="#pagamento" style="font-size: 35px" data-transition="slide">Pagamento</a>
+                        </li>
+                    </ul>
+                </div>    
+			</div>
+		</div><!-- /Menu -->
+        
+        <!-- Produto -->
+        <div data-role="page" id="produto" data-theme="a" style="background-color: #FFFFFF">
+            <div data-role="header" style="background-color: #FF8D0D" data-position="fixed">
+                <h1 style="color: white;font-size: 20px">Produtos</h1>
+                <a href="#menu" class="ui-nodisc-icon ui-btn ui-icon-carat-l ui-btn-icon-left ui-corner-all" style="background-color: #FF8D0D; color: white; border: none;font-size: 18px" data-transition="slide" data-direction="reverse">Voltar</a>   
+            </div>
+            <div role="main" class="ui-content">
+                <div style="padding-left: 5%; padding-right: 5%">                    
+                    <ul data-role="listview" data-filter="true" data-filter-placeholder="" data-inset="true">
+                        <li>
+                            <h2>Batata</h2>
+                            <label>R$ 100,00</label>
+                        </li>
+                        <li>
+                            <h2>Produto 2</h2>
+                            <label>R$ 150,00</label>
+                        </li>
+                        <li>
+                            <h2>Produto 3</h2>
+                            <label>R$ 60,00</label>
+                        </li>
+                        <li>
+                            <h2>Produto 4</h2>
+                            <label>R$ 95,00</label>
+                        </li>
+                        <li>
+                            <h2>Produto 5</h2>
+                            <label>R$ 10,00</label>
+                        </li>
+                        <li>
+                            <h2>Produto 6</h2>
+                            <label>R$ 15,00</label>
+                        </li>
+                    </ul>   
+                </div>
+            </div>
+        </div><!-- /Produto --> 
+        
+        <!-- Grupo -->
+		<div data-role="page" id="grupo" data-theme="a" style="background-color: #FFFFFF">
+            <div data-role="header" style="background-color: #FF8D0D" data-position="fixed">
+                <h1 style="color: white;font-size: 20px">Grupo</h1>
+                <a href="#menu" class="ui-nodisc-icon ui-btn ui-icon-carat-l ui-btn-icon-left ui-corner-all" style="background-color: #FF8D0D; color: white; border: none;font-size: 18px" data-transition="slide" data-direction="reverse">Voltar</a>   
+            </div>
+            <div role="main" class="ui-content">
+                <div style="padding-left: 5%; padding-right: 5%">                    
+                    <ul data-role="listview" data-filter="true" data-filter-placeholder="" data-inset="true">
+                        <li id="i1">
+                            <a>
+                                <h2>Felipe Panizza</h2>
+                                <label>Total gasto: R$ 100,00</label>    
+                            </a>
+                        </li>
+                        <li>
+                            <a>
+                                <h2>Adael Oliveira</h2>
+                                <label>Total gasto: R$ 150,00</label>
+                            </a>    
+                        </li>
+                        <li>
+                            <a>
+                                <h2>Henry Lucas</h2>
+                                <label>Total gasto: R$ 60,00</label>
+                            </a>   
+                        </li>
+                    </ul>   
+                </div>
+            </div>
+        </div><!-- /Grupo -->
+        
+        <!-- Limite -->
+        <div data-role="page" id="limite" data-theme="a" style="background-color: #FFFFFF">
+            <div data-role="header" style="background-color: #FF8D0D" data-position="fixed">
+                <h1 style="color: white;font-size: 20px">Limite</h1>
+                <a href="#menu" class="ui-nodisc-icon ui-btn ui-icon-carat-l ui-btn-icon-left ui-corner-all" style="background-color: #FF8D0D; color: white; border: none;font-size: 18px" data-transition="slide" data-direction="reverse">Voltar</a>   
+            </div>
+            <div role="main" class="ui-content">
+                <div style="bottom: 0;padding: 1rem;">
+                    <label style="color: #003D5B;font-size: 25px;line-height: 0.01;">Limite Total</label>
+                    <label style="color: #FF8D0D;font-size: 50px;margin: 0;">R$ 1000,00</label>
+                    <br>
+                    <br>
+                    <label style="color: #003D5B;font-size: 25px;line-height: 0.01;">Usado</label>
+                    <label style="color: #FF8D0D;font-size: 50px;margin: 0;">R$ 500,00</label>
+                    <br>
+                    <div style="padding-top: 40%">
+                        <a href="#limiteAdicionar" class="ui-btn ui-icon-plus ui-btn-icon-left ui-shadow ui-corner-all" data-transition="slide">Aumentar Limite</a>
+                        <a href="#limiteRemover" class="ui-btn ui-icon-minus ui-btn-icon-left ui-shadow ui-corner-all" data-transition="slide">Diminuir Limite</a> 
+                    </div>
+                </div>
+            </div>
+        </div><!-- /Limite -->
+        
+        <!-- Limite > Adicionar -->
+        <div data-role="page" id="limiteAdicionar" data-theme="a" style="background-color: #FFFFFF">
+            <div data-role="header" style="background-color: #FF8D0D" data-position="fixed">
+                <h1 style="color: white;font-size: 20px">Limite</h1>
+                <a href="#limite" class="ui-nodisc-icon ui-btn ui-icon-carat-l ui-btn-icon-left ui-corner-all" style="background-color: #FF8D0D; color: white; border: none;font-size: 18px" data-transition="slide" data-direction="reverse">Voltar</a>   
+            </div>
+            <div role="main" class="ui-content">
+                <div style="padding-left: 5%; padding-right: 5%">                    
+                    <ul data-role="listview" data-filter="true" data-filter-placeholder="" data-inset="true">
+                        <li>
+                            <a>
+                                <h2 style="color: #FF8D0D">Murillo Wolf Cavalheiro</h2>
+                                <label>Limite: R$ 500,00</label>
+                                <label>Total gasto: R$ 500,00</label>
+                            </a>
+                        </li>
+                        <li>
+                            <a>
+                                <h2>Felipe Panizza</h2>
+                                <label>Limite: R$ 500,00</label>
+                                <label>Total gasto: R$ 100,00</label>
+                            </a>
+                        </li>
+                        <li>
+                            <a>
+                                <h2>Adael Oliveira</h2>
+                                <label>Limite: R$ 500,00</label>
+                                <label>Total gasto: R$ 150,00</label>
+                            </a>    
+                        </li>
+                        <li>
+                            <a>
+                                <h2>Henry Lucas</h2>
+                                <label>Limite: R$ 500,00</label>
+                                <label>Total gasto: R$ 60,00</label>
+                            </a>   
+                        </li>
+                    </ul>   
+                </div>
+            </div>
+        </div><!-- /Limite > Adicionar -->
+        
+        <!-- Limite > Remover -->
+        <div data-role="page" id="limiteRemover" data-theme="a" style="background-color: #FFFFFF">
+            <div data-role="header" style="background-color: #FF8D0D" data-position="fixed">
+                <h1 style="color: white;font-size: 20px">Limite</h1>
+                <a href="#limite" class="ui-nodisc-icon ui-btn ui-icon-carat-l ui-btn-icon-left ui-corner-all" style="background-color: #FF8D0D; color: white; border: none;font-size: 18px" data-transition="slide" data-direction="reverse">Voltar</a>   
+            </div>
+            <div role="main" class="ui-content">
+                <div style="padding-left: 5%; padding-right: 5%">                    
+                    <ul data-role="listview" data-filter="true" data-filter-placeholder="" data-inset="true">
+                        <li>
+                            <a>
+                                <h2 style="color: #FF8D0D">Murillo Wolf Cavalheiro</h2>
+                                <label>Limite: R$ 500,00</label>
+                                <label>Total gasto: R$ 500,00</label>
+                            </a>
+                        </li>
+                        <li>
+                            <a>
+                                <h2>Felipe Panizza</h2>
+                                <label>Limite: R$ 500,00</label>
+                                <label>Total gasto: R$ 100,00</label>
+                            </a>
+                        </li>
+                        <li>
+                            <a>
+                                <h2>Adael Oliveira</h2>
+                                <label>Limite: R$ 500,00</label>
+                                <label>Total gasto: R$ 150,00</label>
+                            </a>    
+                        </li>
+                        <li>
+                            <a>
+                                <h2>Henry Lucas</h2>
+                                <label>Limite: R$ 500,00</label>
+                                <label>Total gasto: R$ 60,00</label>
+                            </a>   
+                        </li>
+                    </ul>   
+                </div>
+            </div>
+        </div><!-- /Limite > Remover -->
+        
+        <!-- Pagamento -->
+        <div data-role="page" id="pagamento" data-theme="a" style="background-color: #FFFFFF">
+            <div data-role="header" style="background-color: #FF8D0D" data-position="fixed">
+                <h1 style="color: white;font-size: 20px">Pagamento</h1>
+                <a href="#menu" class="ui-nodisc-icon ui-btn ui-icon-carat-l ui-btn-icon-left ui-corner-all" style="background-color: #FF8D0D; color: white; border: none;font-size: 18px" data-transition="slide" data-direction="reverse">Voltar</a>   
+            </div>
+            <div role="main" class="ui-content">
+                <div style="padding-left: 5%; padding-right: 5%">                    
+                    <label style="color: #0C0B0B; font-size: 20px;">Status: Conta Aberta</label>
+                    <br>
+                    <label style="color: #003D5B;font-size: 25px;line-height: 0.01;">Total gasto</label>
+                    <label style="color: #FF8D0D;font-size: 50px;margin: 0;">R$ 500,00</label>
+                    <br>
+                    <label style="color: #003D5B;font-size: 25px;line-height: 0.01;">Saldo Disponível</label>
+                    <label style="color: #FF8D0D;font-size: 50px;margin: 0;">R$ 500,00</label>
+                    <br>
+                    <a href="#" class="ui-btn" style="background-color: #FFD409; color: white;width: auto; font-size: 35px;" data-transition="slide">Fechar Conta</a>
+                    <a href="#pagamentoFechamento" class="ui-btn" style="background-color: #FFD409; color: white;width: auto; font-size: 30px;" data-transition="slide">Pagar pelo APP</a>
+                </div>
+            </div>
+        </div><!-- /Pagamento -->
+        
+        <!-- Pagamento > Fechamento -->
+        <div data-role="page" id="pagamentoFechamento" data-theme="a" style="background-color: #FFFFFF">
+            <div data-role="header" style="background-color: #FF8D0D" data-position="fixed">
+                <h1 style="color: white;font-size: 20px">Fechamento</h1>
+                <a href="#pagamento" class="ui-nodisc-icon ui-btn ui-icon-carat-l ui-btn-icon-left ui-corner-all" style="background-color: #FF8D0D; color: white; border: none;font-size: 18px" data-transition="slide" data-direction="reverse">Voltar</a>   
+            </div>
+            <div role="main" class="ui-content">
+                <div style="padding-left: 5%; padding-right: 5%">                    
+                    <label style="color: #0C0B0B; font-size: 20px;">Status: Conta Fechada</label>
+                    <p style="font-size: 17px">Apresente esse QR Code na saída. Obrigado pela prefereência.</p>
+                    <center>
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?data=TESTE&amp;size=100x100" alt="" title="250px" width="250px">
+                        <br><br>
+                        <a href="#one" class="ui-btn ui-btn-inline" style="background-color: #E8200C; color: white;width: auto; font-size: 20px;" data-transition="slidedown">SAIR</a>
+                    </center> 
+                </div>
+            </div>
+        </div><!-- /Pagamento > Fechamento -->
+        
+        <!-- Fechar Conta -->
+        <div data-role="page" id="fecharConta" data-theme="a" style="background-color: #FFFFFF">
+            <div data-role="header" style="background-color: #FF8D0D; border: none; height: 40px;">
+                <a class="ui-btn ui-btn-icon-left ui-corner-all" style="background-color: #FF8D0D; color: white; border: none; border: none !important; font-size: 20px; color:#F6EFEF !important; padding: 1%;">Murillo Wolf Cavalheiro</a>
+                <h1 style="color: white; text-align: right;"></h1>
+                <a class="ui-btn ui-btn-icon-left ui-corner-all" style="background-color: #FF8D0D;; color: white; border: none; border: none !important; font-size: 20px; color:#F6EFEF !important; padding: 1%; padding-top: 1px">12/10/2018</a>
+            </div>
+            <div role="main" class="ui-content">
+                <div style="bottom: 0;">
+                    <h3 style="text-align: center; color: #E8200C">Você não possui contas abertas</h3>
+                    <h3 style="text-align: center; color: #E8200C;">Código da ultima conta</h3>
+                    <br>
+                    <center>
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?data=TESTE&amp;size=100x100" alt="" title="250px" width="250px">
+                        <br><br>
+                        <a href="#one" class="ui-btn ui-btn-inline" style="background-color: #E8200C; color: white;width: auto; font-size: 20px;" data-transition="slidedown">SAIR</a>
+                    </center>    
+                </div>
+            </div>
+        </div><!-- /Fechar Conta -->
+        
+        <script type="text/javascript" src="cordova.js"></script>
+    </body>
+</html>

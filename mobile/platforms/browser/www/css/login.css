@@ -1,0 +1,75 @@
+body {
+  background-color: #6D5959 !important;
+}
+
+body * {
+  font-family: 'Montserrat' sans-serif !important;
+}
+
+.wrap {
+  width: 450px !important;
+  margin: 0 auto !important;
+}
+
+.mat-label {
+  display: block !important;
+  font-size: 16px !important;
+  transform: translateY(25px) !important;
+  color: #e2e2e2 !important;
+  transition: all 0.5s !important;
+}
+
+.mat-input {
+  position: relative !important;
+  background: transparent !important;
+  width: 100% !important;
+  border: none !important;
+  outline: none !important;
+  padding: 8px 0 !important;
+  font-size: 16px !important;
+}
+
+.mat-div {
+  padding: 30px 0 0 0 !important;
+  position: relative !important;
+}
+
+.mat-div:after, .mat-div:before {
+  content: "" !important;
+  position: absolute !important;
+  display: block !important;
+  width: 100% !important;
+  height: 2px !important;
+  background-color: #e2e2e2 !important; 
+  bottom: 0 !important;
+  left: 0 !important;
+  transition: all 0.5s !important;
+}
+
+.mat-div::after {
+  background-color: #8E8DBE !important;
+  transform: scaleX(0) !important;
+}
+
+.is-active::after {
+  transform: scaleX(1) !important;
+}
+
+.is-active .mat-label {
+  color: #8E8DBE !important;
+}
+
+.is-completed .mat-label {
+  font-size: 12px !important;
+  transform: translateY(0) !important;
+}
+
+button {
+  background-color: #93E1D8 !important;
+  border: none !important;
+  display: block !important;
+  margin: 35px auto !important;
+  padding: 15px 30px !important;
+  border-radius: 10px !important;
+  cursor: pointer !important;
+}

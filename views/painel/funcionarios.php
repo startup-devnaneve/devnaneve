@@ -42,12 +42,12 @@
                 </div>
                 <div class="sidebar-wrapper">               
                     <ul class="nav">
-                        <!-- <li>
-                            <a href="../index.php">
+                        <li>
+                            <a href="home.php">
                                 <i class="material-icons">dashboard</i>
                                 <p>Home</p>
                             </a>
-                        </li> -->
+                        </li>
                         <li class="active">
                             <a data-toggle="collapse" href="#tablesExamples" aria-expanded="true">
                                 <i class="material-icons">grid_on</i>
@@ -60,9 +60,9 @@
                                     <li  class="active">
                                         <a href="funcionarios.php">Funcionários</a>
                                     </li>
-                                   <!--  <li>
+                                    <li>
                                         <a href="clientes.php">Clientes</a>
-                                    </li> -->
+                                    </li>
                                     <li>
                                         <a href="produtos.php">Produtos</a>
                                     </li>

@@ -153,31 +153,124 @@
                                     <div class="card-content">
                                         <h4 class="card-title">Cadastro</h4>
 
-                                        <input type="hidden" name="codigo_pro" class="codigo" id="codigo_pro" value="0" />
+                                        <input type="hidden" name="codigo_cli" class="codigo" id="codigo_cli" value="0" />
 
                                         <div class="form-group is-empty has-feedback">
-                                            <?php $campo = "nome_pro"; ?>
-                                            <label for="<?= $campo ?>" class="control-label col-sm-3">Produto:</label>
+                                            <?php $campo = "nome_cli"; ?>
+                                            <label for="<?= $campo ?>" class="control-label col-sm-3">Nome:</label>
                                             <div class="col-xs-8 input-icon icone-input-alinhado-2 input-modal-mobile-1">
-                                                <input type="text" name="<?= $campo ?>" id="<?= $campo ?>" maxlength="35" class="form-control" autocomplete="off" />
+                                                <input type="text" name="<?= $campo ?>" id="<?= $campo ?>" maxlength="150" class="form-control" autocomplete="off" />
                                             </div>
                                         </div>
 
                                         <div class="form-group is-empty has-feedback">
-                                            <?php $campo = "quantidade_pro"; ?>
-                                            <label for="<?= $campo ?>" class="control-label col-sm-3">Quantidade:</label>
+                                            <?php $campo = "datanascimento_cli"; ?>
+                                            <label for="<?= $campo ?>" class="control-label col-sm-3">Data de Nascimento:</label>
                                             <div class="col-xs-8 input-icon icone-input-alinhado-2 input-modal-mobile-1">
-                                                <input type="number" name="<?= $campo ?>" id="<?= $campo ?>" maxlength="10" class="form-control" autocomplete="off" />
+                                                <input type="number" name="<?= $campo ?>" id="<?= $campo ?>" maxlength="10" class="form-control data" autocomplete="off" />
                                             </div>
                                         </div>
 
                                         <div class="form-group is-empty has-feedback">
-                                            <?php $campo = "valor_pro"; ?>
-                                            <label for="<?= $campo ?>" class="control-label col-sm-3">Valor:</label>
+                                            <?php $campo = "telefone_cli"; ?>
+                                            <label for="<?= $campo ?>" class="control-label col-sm-3">Telefone:</label>
                                             <div class="col-xs-8 input-icon icone-input-alinhado-2 input-modal-mobile-1">
-                                                <input type="text" name="<?= $campo ?>" id="<?= $campo ?>" maxlength="15" class="form-control preco" autocomplete="off" />
+                                                <input type="text" name="<?= $campo ?>" id="<?= $campo ?>" maxlength="15" class="form-control" onkeyup="mascara(this, mtel);" autocomplete="off" />
                                             </div>
                                         </div>
+
+                                        <div class="form-group is-empty has-feedback">
+                                            <?php $campo = "celular_cli"; ?>
+                                            <label for="<?= $campo ?>" class="control-label col-sm-3">Celular:</label>
+                                            <div class="col-xs-8 input-icon icone-input-alinhado-2 input-modal-mobile-1">
+                                                <input type="text" name="<?= $campo ?>" id="<?= $campo ?>" maxlength="15" class="form-control" onkeyup="mascara(this, mtel);" autocomplete="off" />
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group is-empty has-feedback">
+                                            <?php $campo = "email_cli"; ?>
+                                            <label for="<?= $campo ?>" class="control-label col-sm-3">E-mail:</label>
+                                            <div class="col-xs-8 input-icon icone-input-alinhado-2 input-modal-mobile-1">
+                                                <input type="email" name="<?= $campo ?>" id="<?= $campo ?>" maxlength="15" class="form-control" autocomplete="off" />
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group is-empty has-feedback">
+                                            <?php $campo = "cpf_cli"; ?>
+                                            <label for="<?= $campo ?>" class="control-label col-sm-3">CPF:</label>
+                                            <div class="col-xs-8 input-icon icone-input-alinhado-2 input-modal-mobile-1">
+                                                <input type="text" name="<?= $campo ?>" id="<?= $campo ?>" maxlength="15" class="form-control cpf" autocomplete="off" />
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group is-empty has-feedback">
+                                            <?php $campo = "rg_cli"; ?>
+                                            <label for="<?= $campo ?>" class="control-label col-sm-3">RG:</label>
+                                            <div class="col-xs-8 input-icon icone-input-alinhado-2 input-modal-mobile-1">
+                                                <input type="text" name="<?= $campo ?>" id="<?= $campo ?>" maxlength="15" class="form-control rg" autocomplete="off" />
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group is-empty has-feedback">
+                                            <?php $campo = "cep_cli"; ?>
+                                            <label for="<?= $campo ?>" class="control-label col-sm-3">CEP:</label>
+                                            <div class="col-xs-8 input-icon icone-input-alinhado-2 input-modal-mobile-1">
+                                                <input type="text" name="<?= $campo ?>" id="<?= $campo ?>" maxlength="15" class="form-control cep" autocomplete="off" />
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group is-empty has-feedback">
+                                            <?php $campo = "logradouro"; ?>
+                                            <label for="<?= $campo ?>" class="control-label col-sm-3">Logradouro:</label>
+                                            <div class="col-xs-8 input-icon icone-input-alinhado-2 input-modal-mobile-1">
+                                                <input type="text" name="<?= $campo ?>" id="<?= $campo ?>" maxlength="100" class="form-control" autocomplete="off" />
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group is-empty has-feedback">
+                                            <?php $campo = "numero_cli"; ?>
+                                            <label for="<?= $campo ?>" class="control-label col-sm-3">Número:</label>
+                                            <div class="col-xs-8 input-icon icone-input-alinhado-2 input-modal-mobile-1">
+                                                <input type="number" name="<?= $campo ?>" id="<?= $campo ?>" maxlength="4" class="form-control" autocomplete="off" />
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group is-empty has-feedback">
+                                            <?php $campo = "bairro_cli"; ?>
+                                            <label for="<?= $campo ?>" class="control-label col-sm-3">Bairro:</label>
+                                            <div class="col-xs-8 input-icon icone-input-alinhado-2 input-modal-mobile-1">
+                                                <input type="text" name="<?= $campo ?>" id="<?= $campo ?>" maxlength="75" class="form-control" autocomplete="off" />
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group is-empty has-feedback">
+                                            <?php $campo = "complemento_cli"; ?>
+                                            <label for="<?= $campo ?>" class="control-label col-sm-3">Complemento:</label>
+                                            <div class="col-xs-8 input-icon icone-input-alinhado-2 input-modal-mobile-1">
+                                                <input type="text" name="<?= $campo ?>" id="<?= $campo ?>" maxlength="100" class="form-control" autocomplete="off" />
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group is-empty has-feedback">
+                                            <?php $campo = "codigo_est"; ?>
+                                            <label for="<?= $campo ?>" class="control-label col-sm-3">Estado:</label>
+                                            <div class="col-xs-8 input-icon icone-input-alinhado-2 input-modal-mobile-1">
+                                                <select name="<?= $campo ?>" id="<?= $campo ?>" class="form-control" >
+                                                    
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group is-empty has-feedback">
+                                            <?php $campo = "codigo_cid"; ?>
+                                            <label for="<?= $campo ?>" class="control-label col-sm-3">Cidade:</label>
+                                            <div class="col-xs-8 input-icon icone-input-alinhado-2 input-modal-mobile-1">
+                                                <select name="<?= $campo ?>" id="<?= $campo ?>" class="form-control" >
+                                                    
+                                                </select>
+                                            </div>
+                                        </div>
+
                                     </div>
                                 </div>
                                 <div class="form-group">

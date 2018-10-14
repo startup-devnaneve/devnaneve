@@ -49,13 +49,13 @@
                             </a>
                         </li>
                         <li>
-                            <a data-toggle="collapse" href="#tablesExamples" aria-expanded="true">
+                            <a data-toggle="collapse" href="#tablesExamples">
                                 <i class="material-icons">grid_on</i>
                                 <p>Gerenciamento
                                     <b class="caret"></b>
                                 </p>
                             </a>
-                            <div class="collapse in" id="tablesExamples">
+                            <div class="collapse" id="tablesExamples">
                                 <ul class="nav">
                                     <li>
                                         <a href="funcionarios.php">Funcionários</a>

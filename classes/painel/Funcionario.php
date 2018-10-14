@@ -1,6 +1,6 @@
 <?php
 
-require_once "../conexao/Conexao.php";
+require_once "conexao/Conexao.php";
 
 class Funcionario {
     
@@ -13,7 +13,6 @@ class Funcionario {
             $email_fun,
             $senha_fun,
             $codigo_gru,
-            $codigo_est,
             $ativo_fun;
 
     /** Métodos Especiais */
@@ -58,13 +57,14 @@ class Funcionario {
     public function inserir_funcionario() {
         try {
             $query = "INSERT INTO $this->tabela(nome_fun, email_fun, senha_fun, codigo_gru, ativo_fun) 
-                      VALUES(:nome_fun, :email_fun, :senha_fun, :ativo_fun)";
+                      VALUES(:nome_fun, :email_fun, :senha_fun, :codigo_gru, :ativo_fun)";
             
             $stmt = DB::prepare($query);
 
             $stmt->bindParam(":nome_fun", $this->getNome_fun());
             $stmt->bindParam(":email_fun", $this->getEmail_fun());
             $stmt->bindParam(":senha_fun", $this->getSenha_fun());
+            $stmt->bindParam(":codigo_gru", $this->getCodigo_gru());
             $stmt->bindParam(":ativo_fun", $this->getAtivo_fun());
 
             echo json_encode($stmt->execute());
@@ -120,7 +120,7 @@ class Funcionario {
      */
     public function listar_funcionarios() {
         try {
-            $query = "SELECT * FROM $this->tabela f INNER JOIN grupo g ON f.codigo_gru = g.codigo_gru WHERE f.ativo_fun = 1";
+            $query = "SELECT f.*, g.* FROM $this->tabela f INNER JOIN grupo g ON f.codigo_gru = g.codigo_gru WHERE f.ativo_fun = 1";
 
 			$stmt = DB::prepare($query);
 

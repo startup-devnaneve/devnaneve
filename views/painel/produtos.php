@@ -23,7 +23,6 @@
         <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons" />
     </head>
-
     <body>
 
         <div class="pesquisando" style="display: none;"></div>
@@ -194,53 +193,52 @@
         </div>
         <!-- ./Modal -->
 
+        <!-- Core JS Files -->
+        <script src="../../assets/js/padrao/jquery-3.1.1.min.js" type="text/javascript"></script>
+        <script src="../../assets/js/padrao/jquery-ui.min.js" type="text/javascript"></script>
+        <script src="../../assets/js/padrao/bootstrap.min.js" type="text/javascript"></script>
+        <script src="../../assets/js/padrao/material.min.js" type="text/javascript"></script>
+        <script src="../../assets/js/padrao/perfect-scrollbar.jquery.min.js" type="text/javascript"></script>
+        <!-- Forms Validations Plugin -->
+        <script src="../../assets/js/padrao/jquery.validate.min.js"></script>
+        <!-- Form Validation -->
+        <script src="../../assets/js/plugins/formvalidation/formValidation.min.js"></script>
+        <script src="../../assets/js/plugins/formvalidation/framework/bootstrap.min.js"></script>
+        <script src="../../assets/js/plugins/formvalidation/language/pt_BR.js"></script>
+        <!-- Plugin for Date Time Picker and Full Calendar Plugin-->
+        <script src="../../assets/js/padrao/moment.min.js"></script>
+        <!-- Charts Plugin -->
+        <script src="../../assets/js/padrao/chartist.min.js"></script>
+        <!-- Plugin for the Wizard -->
+        <script src="../../assets/js/padrao/jquery.bootstrap-wizard.js"></script>
+        <!-- Notifications Plugin -->
+        <script src="../../assets/js/padrao/bootstrap-notify.js"></script>
+        <!-- DateTimePicker Plugin -->
+        <script src="../../assets/js/padrao/bootstrap-datetimepicker.js"></script>
+        <!-- Vector Map plugin -->
+        <script src="../../assets/js/padrao/jquery-jvectormap.js"></script>
+        <!-- Sliders Plugin -->
+        <script src="../../assets/js/padrao/nouislider.min.js"></script>
+        <!-- Select Plugin -->
+        <script src="../../assets/js/padrao/jquery.select-bootstrap.js"></script>
+        <!-- DataTables.net Plugin -->
+        <script src="../../assets/js/padrao/jquery.datatables.js"></script>
+        <!-- Sweet Alert plugin -->
+        <script src="../../assets/js/plugins/sweetalert/sweetalert.min.js"></script>
+        <!-- Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput -->
+        <script src="../../assets/js/padrao/jasny-bootstrap.min.js"></script>
+        <!-- Full Calendar Plugin  -->
+        <script src="../../assets/js/padrao/fullcalendar.min.js"></script>
+        <!-- TagsInput Plugin -->
+        <script src="../../assets/js/padrao/jquery.tagsinput.js"></script>
+        <!-- Material Dashboard javascript methods -->
+        <script src="../../assets/js/padrao/material-dashboard.js"></script>
+        <!-- Material Dashboard DEMO methods, don't include it in your project! -->
+        <script src="../../assets/js/padrao/demo.js"></script>
+        <!-- Custom JS -->
+        <script src="../../assets/js/paginas/produto.js"></script>
+        <!-- Mascara -->
+        <script src="../../assets/js/plugins/jquery-mask/jquery.mask.min.js"></script>
+        <script src="../../assets/js/plugins/util/mascara.js"></script>
     </body>
-    <!--   Core JS Files   -->
-    <script src="../../assets/js/padrao/jquery-3.1.1.min.js" type="text/javascript"></script>
-    <script src="../../assets/js/padrao/jquery-ui.min.js" type="text/javascript"></script>
-    <script src="../../assets/js/padrao/bootstrap.min.js" type="text/javascript"></script>
-    <script src="../../assets/js/padrao/material.min.js" type="text/javascript"></script>
-    <script src="../../assets/js/padrao/perfect-scrollbar.jquery.min.js" type="text/javascript"></script>
-    <!-- Forms Validations Plugin -->
-    <script src="../../assets/js/padrao/jquery.validate.min.js"></script>
-    <!-- Form Validation -->
-    <script src="../../assets/js/plugins/formvalidation/formValidation.min.js"></script>
-    <script src="../../assets/js/plugins/formvalidation/framework/bootstrap.min.js"></script>
-    <script src="../../assets/js/plugins/formvalidation/language/pt_BR.js"></script>
-    <!--  Plugin for Date Time Picker and Full Calendar Plugin-->
-    <script src="../../assets/js/padrao/moment.min.js"></script>
-    <!--  Charts Plugin -->
-    <script src="../../assets/js/padrao/chartist.min.js"></script>
-    <!--  Plugin for the Wizard -->
-    <script src="../../assets/js/padrao/jquery.bootstrap-wizard.js"></script>
-    <!--  Notifications Plugin    -->
-    <script src="../../assets/js/padrao/bootstrap-notify.js"></script>
-    <!-- DateTimePicker Plugin -->
-    <script src="../../assets/js/padrao/bootstrap-datetimepicker.js"></script>
-    <!-- Vector Map plugin -->
-    <script src="../../assets/js/padrao/jquery-jvectormap.js"></script>
-    <!-- Sliders Plugin -->
-    <script src="../../assets/js/padrao/nouislider.min.js"></script>
-    <!-- Select Plugin -->
-    <script src="../../assets/js/padrao/jquery.select-bootstrap.js"></script>
-    <!--  DataTables.net Plugin    -->
-    <script src="../../assets/js/padrao/jquery.datatables.js"></script>
-    <!-- Sweet Alert plugin -->
-    <script src="../../assets/js/plugins/sweetalert/sweetalert.min.js"></script>
-    <!--	Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput -->
-    <script src="../../assets/js/padrao/jasny-bootstrap.min.js"></script>
-    <!--  Full Calendar Plugin    -->
-    <script src="../../assets/js/padrao/fullcalendar.min.js"></script>
-    <!-- TagsInput Plugin -->
-    <script src="../../assets/js/padrao/jquery.tagsinput.js"></script>
-    <!-- Material Dashboard javascript methods -->
-    <script src="../../assets/js/padrao/material-dashboard.js"></script>
-    <!-- Material Dashboard DEMO methods, don't include it in your project! -->
-    <script src="../../assets/js/padrao/demo.js"></script>
-    <!-- Custom JS -->
-    <script src="../../assets/js/paginas/produto.js"></script>
-    <!-- Mascara -->
-    <script src="../../assets/js/plugins/jquery-mask/jquery.mask.min.js"></script>
-    <script src="../../assets/js/plugins/util/mascara.js"></script>
-
 </html>

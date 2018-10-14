@@ -4,10 +4,10 @@ require_once "../../Funcionario.php";
 if($_SERVER["REQUEST_METHOD"] === "GET") {
     try {
         $funcionario = new Funcionario();
-        $retorno = $funcionario->listar_funcionarios();
+        $dados = $funcionario->listar_funcionarios();
 
-        if($retorno) {
-            echo json_encode(array("retorno" => true, "dados" => $retorno));
+        if($dados) {
+            echo json_encode(array("retorno" => true, "dados" => $dados));
         } else {
             echo json_encode(array("retorno" => false));
         }

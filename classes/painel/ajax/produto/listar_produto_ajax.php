@@ -4,10 +4,10 @@ require_once "../../Produto.php";
 if($_SERVER["REQUEST_METHOD"] === "GET") {
     try {
         $produto = new Produto();
-        $retorno = $produto->listar_produtos();
+        $dados = $produto->listar_produtos();
 
-        if($retorno) {
-            echo json_encode(array("retorno" => true, "dados" => $retorno));
+        if($dados) {
+            echo json_encode(array("retorno" => true, "dados" => $dados));
         } else {
             echo json_encode(array("retorno" => false));
         }

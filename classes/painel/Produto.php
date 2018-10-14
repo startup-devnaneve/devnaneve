@@ -106,7 +106,7 @@ class Produto {
      */
     public function listar_produtos() {
         try {
-            $query = "SELECT * FROM produto WHERE ativo_pro = 1";
+            $query = "SELECT * FROM $this->tabela WHERE ativo_pro = 1";
             
             $stmt = DB::prepare($query);
 

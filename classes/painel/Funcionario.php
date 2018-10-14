@@ -120,15 +120,15 @@ class Funcionario {
      */
     public function listar_funcionarios() {
         try {
-            $query = "SELECT f.*, g.* FROM $this->tabela f INNER JOIN grupo g ON f.codigo_gru = g.codigo_gru WHERE f.ativo_fun = 1";
-
-			$stmt = DB::prepare($query);
+            $query = "SELECT * FROM funcionario WHERE ativo_fun = 1";
+            
+            $stmt = DB::prepare($query);
 
 			$stmt->execute();
 			return $stmt->fetchAll();
-		} catch (PDOException $e) {
+        } catch(PDOException $e) {
             echo $e->getMessage();
-		}
+        }
     }
     
     /**
@@ -136,7 +136,7 @@ class Funcionario {
      */
     public function buscar_funcionario($codigo_fun) {
         try {
-			$query = "SELECT * FROM $this->tabela f INNER JOIN grupo g ON f.codigo_gru = g.codigo_gru WHERE codigo_fun = :codigo_fun AND f.ativo_fun = 1";
+			$query = "SELECT * FROM $this->tabela f INNER JOIN grupo g ON f.codigo_gru = g.codigo_gru WHERE f.codigo_fun = :codigo_fun AND f.ativo_fun = 1";
 
 			$stmt = DB::prepare($query);
 			$stmt->bindParam(":codigo_fun", $codigo_fun);

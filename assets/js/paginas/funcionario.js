@@ -171,8 +171,7 @@ function listar_funcionario() {
         url: "../../classes/painel/ajax/funcionario/listar_funcionario_ajax.php",
         dataType: "json",
         success: function(data) {
-            console.log(data.dados);
-            //montar_tabela(data.dados);
+            montar_tabela(data.dados);
         },
         error: function(error) {
             console.log(error);
@@ -199,7 +198,6 @@ function montar_tabela(dados) {
                 html += "<tr>" +
                             "<td>" + dados[i].nome_fun + "</td>" +
                             "<td>" + dados[i].email_fun + "</td>" +
-                            "<td>" + dados[i].descricao_gru + "</td>" +
                             "<td>" + acoes + "</td>" +
                         "</tr>";
             }

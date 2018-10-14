@@ -42,12 +42,12 @@
                 </div>
                 <div class="sidebar-wrapper">               
                     <ul class="nav">
-                        <li>
+                        <!-- <li>
                             <a href="../index.php">
                                 <i class="material-icons">dashboard</i>
                                 <p>Home</p>
                             </a>
-                        </li>
+                        </li> -->
                         <li class="active">
                             <a data-toggle="collapse" href="#tablesExamples" aria-expanded="true">
                                 <i class="material-icons">grid_on</i>
@@ -60,9 +60,9 @@
                                     <li  class="active">
                                         <a href="funcionarios.php">Funcionários</a>
                                     </li>
-                                    <li>
+                                   <!--  <li>
                                         <a href="clientes.php">Clientes</a>
-                                    </li>
+                                    </li> -->
                                     <li>
                                         <a href="produtos.php">Produtos</a>
                                     </li>
@@ -110,7 +110,6 @@
                                             <thead>
                                                 <th>Nome</th>
                                                 <th>E-mail</th>
-                                                <th>Grupo</th>
                                                 <th>Ações</th>
                                             </thead>
                                             <tbody id="dados-funcionario">
@@ -183,8 +182,8 @@
                                             <label for="<?= $campo ?>" class="control-label col-sm-3">Grupo:</label>
                                             <div class="col-xs-8 input-icon icone-input-alinhado-2 input-modal-mobile-1">
                                                 <select name="<?= $campo ?>" id="<?= $campo ?>" class="form-control" >
-                                                    <option value="0">Gerência</option>
-                                                    <option value="1">Administrativo</option>
+                                                    <option value="1">Gerência</option>
+                                                    <option value="2">Administrativo</option>
                                                 </select>
                                             </div>
                                         </div>

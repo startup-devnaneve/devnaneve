@@ -12,6 +12,8 @@
         <link href="../../assets/css/padrao/bootstrap.min.css" rel="stylesheet" />
         <!-- Material Dashboard CSS -->
         <link href="../../assets/css/padrao/material-dashboard.css" rel="stylesheet" />
+        <!-- SweetAlert CSS -->
+        <link href="../../assets/css/plugins/sweetalert/sweetalert.min.css" rel="stylesheet" />
         <!-- CSS for Demo Purpose, don't include it in your project -->
         <link href="../../assets/css/padrao/demo.css" rel="stylesheet" />
         <link href="../../assets/css/padrao/estilo.css" rel="stylesheet" />
@@ -223,8 +225,8 @@
     <script src="../../assets/js/padrao/jquery.select-bootstrap.js"></script>
     <!--  DataTables.net Plugin    -->
     <script src="../../assets/js/padrao/jquery.datatables.js"></script>
-    <!-- Sweet Alert 2 plugin -->
-    <script src="../../assets/js/padrao/sweetalert2.js"></script>
+    <!-- Sweet Alert plugin -->
+    <script src="../../assets/js/plugins/sweetalert/sweetalert.min.js"></script>
     <!--	Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput -->
     <script src="../../assets/js/padrao/jasny-bootstrap.min.js"></script>
     <!--  Full Calendar Plugin    -->

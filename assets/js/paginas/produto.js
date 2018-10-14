@@ -58,17 +58,13 @@ $(document).ready(function() {
                 },
                 dataType: "json",
                 success: function(data) {
-                    swal({
-                        title: "Sucesso",
-                        text:  "Produto cadastrado",
-                        type:  "success",                    
-                        confirmButtonText: "Ok"
-                    }).then((result) => {
-                        if(result.value) {
-                            location.reload();
-                        }
-                    });
-                }, 
+                    swal({title: "Sucesso", text:  "Produto salvo", type:  "success"});
+
+                    limpar_formulario("form-modal-cadastro");
+                    listar_produto();
+
+                    $("#modal-cadastro").modal("hide");
+                },
                 error: function(error) {
                     console.log(error);
                 }
@@ -85,8 +81,12 @@ $(document).ready(function() {
                 },
                 dataType: "json",
                 success: function(data) {
-                    swal({title: "Sucesso", text:  "Produto cadastrado", type:  "success"});
+                    swal({title: "Sucesso", text:  "Produto salvo", type:  "success"});
+
+                    limpar_formulario("form-modal-cadastro");
                     listar_produto();
+
+                    $("#modal-cadastro").modal("hide");
                 }, 
                 error: function(error) {
                     console.log(error);
@@ -107,7 +107,14 @@ $(document).on("click", ".btn-alterar", function() {
         dataType: "json",
         success: function(data) {
             if(data.retorno) {
-                console.log(data.dados);
+                var valor = data.dados.valor_pro;
+                valor = valor.replace(".", ",");
+                valor = valor.replace(".", "");
+
+                $("#codigo_pro").val(data.dados.codigo_pro);
+                $("#nome_pro").val(data.dados.nome_pro);
+                $("#quantidade_pro").val(data.dados.quantidade_pro);
+                $("#valor_pro").val(valor);
 
                 $("#modal-cadastro").modal("show");
             }
@@ -119,18 +126,35 @@ $(document).on("click", ".btn-alterar", function() {
 });
 
 $(document).on("click", ".btn-deletar", function() {
-    swal({
+    var codigo_pro = $(this).data("codigo");
+
+    swal({        
         title: "Deletar",
-        text: "Deseja deletar esse produto?",
-        type: "info",
-        showCancelButton: true,        
+        text: "Deseja mesmo deletar esse produto?",
+        html: true,
+        type: "warning",
+        showCancelButton: true,
+        //confirmButtonColor: "#18a689",
         confirmButtonText: "Deletar",
         cancelButtonText: "Cancelar",
         closeOnConfirm: true,
         allowOutsideClick: true
     },
     function () {
-        swal("Ok", 'Excluido!', "success");
+        //mostrar_carregando();
+
+        $.ajax({
+            type: "POST",
+            url: "../../classes/painel/ajax/produto/deletar_produto_ajax.php",
+            data: {codigo_pro: codigo_pro},
+            dataType: "json",
+            success: function(data) {
+                listar_produto();
+            },
+            error: function(error) {
+                console.log(error);
+            }
+        });
     });
 });
 
@@ -141,13 +165,7 @@ function listar_produto() {
         url: "../../classes/painel/ajax/produto/listar_produto_ajax.php",
         dataType: "json",
         success: function(data) {
-            if(data.retorno) {
-                montar_tabela(data.dados)
-                fechar_carregando();
-            } else {
-                console.log("Nada");
-                fechar_carregando();
-            }
+            montar_tabela(data.dados);
         },
         error: function(error) {
             console.log(error);
@@ -157,7 +175,7 @@ function listar_produto() {
 
 /** Montar as colunas da tabela com os dados retornado */
 function montar_tabela(dados) {
-    var html = "<tr><td colspan='4'>Nenhum registro encontrado!</td></tr>";
+    var html = "<tr><td colspan='4' style='text-align: center;'>Nenhum registro encontrado!</td></tr>";
 
     if(dados !== undefined) {
         var tam = dados.length;
@@ -181,9 +199,12 @@ function montar_tabela(dados) {
 
             $("#dados-produto").html(html);
         } else {
-            $("#dados-produto").html(html);
+            html = "<tr><td colspan='4' style='text-align: center;'>Nenhum registro encontrado!</td></tr>";
         }
+    } else {
+        $("#dados-produto").html(html);
     }
+
 }
 
 /** Mostrar Carregando */
@@ -194,4 +215,13 @@ function mostrar_carregando() {
 /** Fechar Carregando */
 function fechar_carregando() {
     $(".pesquisando").hide();
+}
+
+/** 
+ * Limpa o formulário passado por parâmetro
+ * */
+function limpar_formulario(formulario) {
+    $("# "+formulario+"").each (function(){
+        this.reset();
+    });
 }

@@ -59,7 +59,6 @@ class Produto {
             echo json_encode($stmt->execute());
         } catch(PDOException $e) {
             echo $e->getMessage();
-            return false;
         }
     }
 
@@ -77,7 +76,6 @@ class Produto {
             $stmt->bindParam(":nome_pro", $this->getNome_pro());
             $stmt->bindParam(":quantidade_pro", $this->getQuantidade_pro());
             $stmt->bindParam(":valor_pro", $this->getValor_pro());
-            $stmt->bindParam(":ativo_pro", $this->getAtivo_pro());
 
             echo json_encode($stmt->execute());
         } catch(PDOException $e) {

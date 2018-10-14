@@ -24,6 +24,8 @@
 
     <body>
 
+        <div class="pesquisando" style="display: none;"></div>
+
         <div class="wrapper">
             <div class="sidebar" data-active-color="orange" data-background-color="black" data-image="../../assets/img/fundo.jpg">
             
@@ -110,16 +112,8 @@
                                                 <th>Valor</th>
                                                 <th>Ações</th>
                                             </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>Batata frita</td>
-                                                    <td>30</td>
-                                                    <td>R$ 10,00</td>
-                                                    <td>
-                                                        <button name="btn-alterar" id="btn-alterar" class="btn btn-simple btn-success btn-icon like" rel="tooltip" data-original-title="Alterar" style="float: left;margin-right: 3px;padding: 5px;display: block;"><i class="material-icons">create</i></button>
-                                                        <button name="btn-deletar" id="btn-deletar" class="btn btn-simple btn-danger btn-icon like" rel="tooltip" data-original-title="Deletar" style="float: left;margin-right: 3px;padding: 5px;display: block;"><i class="material-icons">close</i></button>
-                                                    </td>
-                                                </tr>
+                                            <tbody id="dados-produto">
+                                                
                                             </tbody>
                                         </table>
                                     </div>
@@ -163,7 +157,7 @@
                                             <?php $campo = "nome_pro"; ?>
                                             <label for="<?= $campo ?>" class="control-label col-sm-3">Produto:</label>
                                             <div class="col-xs-8 input-icon icone-input-alinhado-2 input-modal-mobile-1">
-                                                <input type="text" name="<?= $campo ?>" id="<?= $campo ?>" maxlength="35" class="form-control" />
+                                                <input type="text" name="<?= $campo ?>" id="<?= $campo ?>" maxlength="35" class="form-control" autocomplete="off" />
                                             </div>
                                         </div>
 
@@ -171,7 +165,7 @@
                                             <?php $campo = "quantidade_pro"; ?>
                                             <label for="<?= $campo ?>" class="control-label col-sm-3">Quantidade:</label>
                                             <div class="col-xs-8 input-icon icone-input-alinhado-2 input-modal-mobile-1">
-                                                <input type="number" name="<?= $campo ?>" id="<?= $campo ?>" maxlength="10" class="form-control" />
+                                                <input type="number" name="<?= $campo ?>" id="<?= $campo ?>" maxlength="10" class="form-control" autocomplete="off" />
                                             </div>
                                         </div>
 
@@ -179,7 +173,7 @@
                                             <?php $campo = "valor_pro"; ?>
                                             <label for="<?= $campo ?>" class="control-label col-sm-3">Valor:</label>
                                             <div class="col-xs-8 input-icon icone-input-alinhado-2 input-modal-mobile-1">
-                                                <input type="text" name="<?= $campo ?>" id="<?= $campo ?>" maxlength="15" class="form-control preco" />
+                                                <input type="text" name="<?= $campo ?>" id="<?= $campo ?>" maxlength="15" class="form-control preco" autocomplete="off" />
                                             </div>
                                         </div>
                                     </div>

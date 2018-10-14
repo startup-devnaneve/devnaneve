@@ -60,10 +60,10 @@
                                     <li>
                                         <a href="funcionarios.php">Funcionários</a>
                                     </li>
-                                    <li>
+                                    <li class="active">
                                         <a href="clientes.php">Clientes</a>
                                     </li>
-                                    <li class="active">
+                                    <li>
                                         <a href="produtos.php">Produtos</a>
                                     </li>
                                 </ul>

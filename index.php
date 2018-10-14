@@ -58,7 +58,7 @@
                                     </div>
                                     <div class="footer text-center">
                                         <!-- <button type="submit" name="btn-entrar" id="btn-entrar" class="btn btn-warning btn-lg"><i class="material-icons">input</i> Entrar</button> -->
-                                        <a href="views/painel/produtos.php" name="btn-entrar" id="btn-entrar" class="btn btn-warning btn-lg"><i class="material-icons">input</i> Entrar</a>
+                                        <a href="views/painel/home.php" name="btn-entrar" id="btn-entrar" class="btn btn-warning btn-lg"><i class="material-icons">input</i> Entrar</a>
                                     </div>
                                 </div>
                             </form>

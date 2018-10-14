@@ -37,11 +37,27 @@ $(document).ready(function() {
             }
         }
     }).on("success.form.fv", function(e) {
-
+        
     });
 
 });
 
 $(document).on("click", "#btn-alterar", function() {
     $("#modal-cadastro").modal("show");
+});
+
+$(document).on("click", "#btn-deletar", function() {
+    swal({
+        title: "Deletar",
+        text: "Deseja deletar esse produto?",
+        type: "info",
+        showCancelButton: true,        
+        confirmButtonText: "Deletar",
+        cancelButtonText: "Cancelar",
+        closeOnConfirm: true,
+        allowOutsideClick: true
+    },
+    function () {
+        swal("Ok", 'Excluido!', "success");
+    });
 });

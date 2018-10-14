@@ -16,7 +16,7 @@ class Cliente{
             $email_cli,
             $cpf_cli,
             $rg_cli,
-            $logradouro_cli,
+            $cep_cli,
             $numero_cli,
             $bairro_cli,
             $complemento_cli,
@@ -72,6 +72,13 @@ class Cliente{
     public function setRg_cli($rg_cli){
         $this->rg_cli = $rg_cli;
     }
+
+    public function getCep_cli(){
+        return $this->cep_cli;
+    }
+    public function setCep_cli($cep_cli){
+        $this->cep_cli = $cep_cli;
+    }
     
     public function getLogradouro_cli(){
         return $this->logradouro_cli;
@@ -120,8 +127,8 @@ class Cliente{
      */
     public function inserir_cliente() {
         try {
-            $query = "INSERT INTO $this->tabela(nome_cli, datanascimento_cli, telefone_cli, celular_cli, email_cli, cpf_cli, rg_cli, logradouro_cli, numero_cli, bairro_cli, complemento_cli, codigo_cid, ativo_cli)
-                      VALUES(:nome_cli, :datanascimento_cli, :telefone_cli, :celular_cli, :email_cli, :cpf_cli, :rg_cli, :logradouro_cli, :numero_cli, :bairro_cli, :complemento_cli, :codigo_cid, :ativo_cli)";
+            $query = "INSERT INTO $this->tabela(nome_cli, datanascimento_cli, telefone_cli, celular_cli, email_cli, cpf_cli, rg_cli, cep_cli, logradouro_cli, numero_cli, bairro_cli, complemento_cli, codigo_cid, ativo_cli)
+                      VALUES(:nome_cli, :datanascimento_cli, :telefone_cli, :celular_cli, :email_cli, :cpf_cli, :rg_cli, :cep_cli, :logradouro_cli, :numero_cli, :bairro_cli, :complemento_cli, :codigo_cid, :ativo_cli)";
 
             $stmt = DB::prepare($query);
             $stmt->bindParam(":nome_cli", $this->getNome_cli());
@@ -131,6 +138,7 @@ class Cliente{
             $stmt->bindParam(":email_cli", $this->getEmail_cli());
             $stmt->bindParam(":cpf_cli", $this->getCpf_cli());
             $stmt->bindParam(":rg_cli", $this->getRg_cli());
+            $stmt->bindParam(":cep_cli", $this->getCep_cli());
             $stmt->bindParam(":logradouro_cli", $this->getLogradouro_cli());
             $stmt->bindParam(":numero_cli", $this->getNumero_cli());
             $stmt->bindParam(":bairro_cli", $this->getBairro_cli());
@@ -162,6 +170,7 @@ class Cliente{
             $stmt->bindParam(":email_cli", $this->getEmail_cli());
             $stmt->bindParam(":cpf_cli", $this->getCpf_cli());
             $stmt->bindParam(":rg_cli", $this->getRg_cli());
+            $stmt->bindParam(":cep_cli", $this->getCep_cli());
             $stmt->bindParam(":logradouro_cli", $this->getLogradouro_cli());
             $stmt->bindParam(":numero_cli", $this->getNumero_cli());
             $stmt->bindParam(":bairro_cli", $this->getBairro_cli());
@@ -198,7 +207,7 @@ class Cliente{
      */
     public function listar_clientes() {
         try {
-            $query = "SELECT * FROM $this->tabela WHERE ativo_cli = 1";
+            $query = "SELECT * FROM $this->tabela c INNER JOIN cidade ci ON c.codigo_cid = ci.codigo_cid INNER JOIN estado e ON ci.codigo_est = e.codigo_est WHERE c.ativo_cli = 1";
 
             $stmt = DB::prepare($query);
 
@@ -214,7 +223,7 @@ class Cliente{
      */
     public function buscar_cliente($codigo_cli) {
         try {
-            $query = "SELECT * FROM $this->tabela WHERE codigo_cli = :codigo_cli AND ativo_cli = 1";
+            $query = "SELECT * FROM $this->tabela c INNER JOIN cidade ci ON c.codigo_cid = ci.codigo_cid INNER JOIN estado e ON ci.codigo_est = e.codigo_est WHERE c.codigo_cli = :codigo_cli AND c.ativo_cli = 1";
 
             $stmt = DB::prepare($query);        
             $stmt->bindParam(":codigo_cli", $codigo_cli);

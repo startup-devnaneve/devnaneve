@@ -66,16 +66,12 @@ CREATE TABLE `cliente` (
   `email_cli` varchar(150) DEFAULT NULL,
   `cpf_cli` varchar(45) DEFAULT NULL,
   `rg_cli` varchar(45) DEFAULT NULL,
-  `cep_cli` varchar(45) DEFAULT NULL,
   `logradouro_cli` varchar(150) DEFAULT NULL,
   `numero_cli` int(11) DEFAULT NULL,
   `bairro_cli` varchar(75) DEFAULT NULL,
   `complemento_cli` varchar(75) DEFAULT NULL,
-  `codigo_cid` int(11) NOT NULL,
   `ativo_cli` tinyint(4) DEFAULT NULL,
-  PRIMARY KEY (`codigo_cli`),
-  KEY `fk_cliente_cidade1_idx` (`codigo_cid`),
-  CONSTRAINT `fk_cliente_cidade1` FOREIGN KEY (`codigo_cid`) REFERENCES `cidades` (`codigo_cid`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  PRIMARY KEY (`codigo_cli`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -86,6 +82,35 @@ CREATE TABLE `cliente` (
 LOCK TABLES `cliente` WRITE;
 /*!40000 ALTER TABLE `cliente` DISABLE KEYS */;
 /*!40000 ALTER TABLE `cliente` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `estabelecimento`
+--
+
+DROP TABLE IF EXISTS `estabelecimento`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `estabelecimento` (
+  `codigo_est` int(11) NOT NULL AUTO_INCREMENT,
+  `razaosocial_est` varchar(150) DEFAULT NULL,
+  `fantasia_est` varchar(150) DEFAULT NULL,
+  `cnpj_est` varchar(45) DEFAULT NULL,
+  `logradouro_est` varchar(150) DEFAULT NULL,
+  `numero_est` int(11) DEFAULT NULL,
+  `bairro_est` varchar(45) DEFAULT NULL,
+  `complemento_est` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`codigo_est`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `estabelecimento`
+--
+
+LOCK TABLES `estabelecimento` WRITE;
+/*!40000 ALTER TABLE `estabelecimento` DISABLE KEYS */;
+/*!40000 ALTER TABLE `estabelecimento` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -100,7 +125,7 @@ CREATE TABLE `estados` (
   `nome_est` varchar(100) DEFAULT NULL,
   `uf_est` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`codigo_est`)
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3886 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -125,12 +150,15 @@ CREATE TABLE `funcionario` (
   `nome_fun` varchar(150) DEFAULT NULL,
   `email_fun` varchar(150) DEFAULT NULL,
   `senha_fun` varchar(45) DEFAULT NULL,
-  `codigo_gru` int(11) NOT NULL,
   `ativo_fun` tinyint(4) DEFAULT NULL,
+  `codigo_gru` int(11) NOT NULL,
+  `codigo_est` int(11) NOT NULL,
   PRIMARY KEY (`codigo_fun`),
   KEY `fk_funcionario_grupo_idx` (`codigo_gru`),
+  KEY `fk_funcionario_estabelecimento1_idx` (`codigo_est`),
+  CONSTRAINT `fk_funcionario_estabelecimento1` FOREIGN KEY (`codigo_est`) REFERENCES `estabelecimento` (`codigo_est`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_funcionario_grupo` FOREIGN KEY (`codigo_gru`) REFERENCES `grupo` (`codigo_gru`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -139,7 +167,6 @@ CREATE TABLE `funcionario` (
 
 LOCK TABLES `funcionario` WRITE;
 /*!40000 ALTER TABLE `funcionario` DISABLE KEYS */;
-INSERT INTO `funcionario` VALUES (2,'Felipe Panizza Embersisc','felipe.embersisc@gmail.co','e10adc3949ba59abbe56e057f20f883e',1,1),(3,'Teste','teste@teste.com.br','e10adc3949ba59abbe56e057f20f883e',1,1);
 /*!40000 ALTER TABLE `funcionario` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -155,7 +182,7 @@ CREATE TABLE `grupo` (
   `descricao_gru` varchar(150) DEFAULT NULL,
   `ativo_gru` tinyint(4) DEFAULT NULL,
   PRIMARY KEY (`codigo_gru`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -164,7 +191,6 @@ CREATE TABLE `grupo` (
 
 LOCK TABLES `grupo` WRITE;
 /*!40000 ALTER TABLE `grupo` DISABLE KEYS */;
-INSERT INTO `grupo` VALUES (1,'Gerência',1),(2,'Administrativo',1);
 /*!40000 ALTER TABLE `grupo` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -212,7 +238,7 @@ CREATE TABLE `produto` (
   `valor_pro` decimal(18,2) DEFAULT NULL,
   `ativo_pro` tinyint(4) DEFAULT NULL,
   PRIMARY KEY (`codigo_pro`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -221,7 +247,6 @@ CREATE TABLE `produto` (
 
 LOCK TABLES `produto` WRITE;
 /*!40000 ALTER TABLE `produto` DISABLE KEYS */;
-INSERT INTO `produto` VALUES (1,'Refrigerante',10,7.50,0),(2,'Refrigerante2',10,2.50,0),(3,'Refrigerante3',10,3.50,0),(4,'Refrigerante4',10,4.50,0);
 /*!40000 ALTER TABLE `produto` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -263,12 +288,14 @@ DROP TABLE IF EXISTS `pulseira`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `pulseira` (
   `codigo_pul` int(11) NOT NULL AUTO_INCREMENT,
+  `codigo_cli` int(11) NOT NULL,
   `numero_pul` int(11) DEFAULT NULL,
-  `credito_pul` decimal(18,2) DEFAULT NULL,
   `status_pul` tinyint(4) DEFAULT NULL,
   `principal_pul` int(11) DEFAULT NULL,
   `ativo_pul` tinyint(4) DEFAULT NULL,
-  PRIMARY KEY (`codigo_pul`)
+  PRIMARY KEY (`codigo_pul`),
+  KEY `fk_pulseira_cliente1_idx` (`codigo_cli`),
+  CONSTRAINT `fk_pulseira_cliente1` FOREIGN KEY (`codigo_cli`) REFERENCES `cliente` (`codigo_cli`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -279,35 +306,6 @@ CREATE TABLE `pulseira` (
 LOCK TABLES `pulseira` WRITE;
 /*!40000 ALTER TABLE `pulseira` DISABLE KEYS */;
 /*!40000 ALTER TABLE `pulseira` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `pulseira_cliente`
---
-
-DROP TABLE IF EXISTS `pulseira_cliente`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `pulseira_cliente` (
-  `codigo_pul` int(11) NOT NULL,
-  `codigo_cli` int(11) NOT NULL,
-  `datainicio_pul` datetime DEFAULT NULL,
-  `datafim_pul` datetime DEFAULT NULL,
-  `status_pul` tinyint(4) DEFAULT NULL,
-  KEY `fk_cliente_pulseira1_idx` (`codigo_cli`),
-  KEY `fk_pulseira_cliente1_idx` (`codigo_pul`),
-  CONSTRAINT `fk_cliente_pulseira1` FOREIGN KEY (`codigo_cli`) REFERENCES `cliente` (`codigo_cli`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_pulseira_cliente1` FOREIGN KEY (`codigo_pul`) REFERENCES `pulseira` (`codigo_pul`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `pulseira_cliente`
---
-
-LOCK TABLES `pulseira_cliente` WRITE;
-/*!40000 ALTER TABLE `pulseira_cliente` DISABLE KEYS */;
-/*!40000 ALTER TABLE `pulseira_cliente` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -372,4 +370,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-10-14 10:05:12
+-- Dump completed on 2018-10-12 22:20:25

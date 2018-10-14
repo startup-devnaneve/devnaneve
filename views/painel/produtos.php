@@ -9,12 +9,14 @@
         <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
         <meta name="viewport" content="width=device-width" />
         <!-- Bootstrap core CSS -->
-        <link href="../../assets/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="../../assets/css/padrao/bootstrap.min.css" rel="stylesheet" />
         <!-- Material Dashboard CSS -->
-        <link href="../../assets/css/material-dashboard.css" rel="stylesheet" />
+        <link href="../../assets/css/padrao/material-dashboard.css" rel="stylesheet" />
         <!-- CSS for Demo Purpose, don't include it in your project -->
-        <link href="../../assets/css/demo.css" rel="stylesheet" />
-        <link href="../../assets/css/estilo.css" rel="stylesheet" />
+        <link href="../../assets/css/padrao/demo.css" rel="stylesheet" />
+        <link href="../../assets/css/padrao/estilo.css" rel="stylesheet" />
+        <!-- Form Validation CSS -->
+        <link href="../../assets/css/plugins/formvalidation/formValidation.min.css" rel="stylesheet">
         <!-- Fonts and icons -->
         <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons" />
@@ -161,7 +163,7 @@
                                             <?php $campo = "nome_pro"; ?>
                                             <label for="<?= $campo ?>" class="control-label col-sm-3">Produto:</label>
                                             <div class="col-xs-8 input-icon icone-input-alinhado-2 input-modal-mobile-1">
-                                                <input type="text" name="<?= $campo ?>" id="<?= $campo ?>" maxlength="255" class="form-control" />
+                                                <input type="text" name="<?= $campo ?>" id="<?= $campo ?>" maxlength="35" class="form-control" />
                                             </div>
                                         </div>
 
@@ -169,7 +171,7 @@
                                             <?php $campo = "quantidade_pro"; ?>
                                             <label for="<?= $campo ?>" class="control-label col-sm-3">Quantidade:</label>
                                             <div class="col-xs-8 input-icon icone-input-alinhado-2 input-modal-mobile-1">
-                                                <input type="number" name="<?= $campo ?>" id="<?= $campo ?>" maxlength="255" class="form-control" />
+                                                <input type="number" name="<?= $campo ?>" id="<?= $campo ?>" maxlength="10" class="form-control" />
                                             </div>
                                         </div>
 
@@ -177,7 +179,7 @@
                                             <?php $campo = "valor_pro"; ?>
                                             <label for="<?= $campo ?>" class="control-label col-sm-3">Valor:</label>
                                             <div class="col-xs-8 input-icon icone-input-alinhado-2 input-modal-mobile-1">
-                                                <input type="text" name="<?= $campo ?>" id="<?= $campo ?>" maxlength="255" class="form-control preco" />
+                                                <input type="text" name="<?= $campo ?>" id="<?= $campo ?>" maxlength="15" class="form-control preco" />
                                             </div>
                                         </div>
                                     </div>
@@ -205,6 +207,10 @@
     <script src="../../assets/js/padrao/perfect-scrollbar.jquery.min.js" type="text/javascript"></script>
     <!-- Forms Validations Plugin -->
     <script src="../../assets/js/padrao/jquery.validate.min.js"></script>
+    <!-- Form Validation -->
+    <script src="../../assets/js/plugins/formvalidation/formValidation.min.js"></script>
+    <script src="../../assets/js/plugins/formvalidation/framework/bootstrap.min.js"></script>
+    <script src="../../assets/js/plugins/formvalidation/language/pt_BR.js"></script>
     <!--  Plugin for Date Time Picker and Full Calendar Plugin-->
     <script src="../../assets/js/padrao/moment.min.js"></script>
     <!--  Charts Plugin -->
@@ -237,5 +243,8 @@
     <script src="../../assets/js/padrao/demo.js"></script>
     <!-- Custom JS -->
     <script src="../../assets/js/paginas/produto.js"></script>
+    <!-- Mascara -->
+    <script src="../../assets/js/plugins/jquery-mask/jquery.mask.min.js"></script>
+    <script src="../../assets/js/plugins/util/mascara.js"></script>
 
 </html>

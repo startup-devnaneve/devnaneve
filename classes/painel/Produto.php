@@ -130,7 +130,7 @@ class Produto {
             $stmt->bindParam(":codigo_pro", $codigo_pro);
 
 			$stmt->execute();
-			return $stmt->fetchAll();
+			return $stmt->fetch();
         } catch(PDOException $e) {
             echo $e->getMessage();
         }

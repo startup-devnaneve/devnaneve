@@ -97,27 +97,28 @@ $(document).ready(function() {
 
 });
 
-$(document).on("click", "#btn-alterar", function() {
+$(document).on("click", ".btn-alterar", function() {
     var codigo_pro = $(this).data("codigo");
 
     $.ajax({
         type: "POST",
-        url: "../../classes/painel/ajax/produto/selecionar_produto_ajax.php",
-        dataType: {codigo_pro: codigo_pro},
-        data: "json",
+        url: "../../classes/painel/ajax/produto/buscar_produto_ajax.php",
+        data: {codigo_pro: codigo_pro},
+        dataType: "json",
         success: function(data) {
-            
+            if(data.retorno) {
+                console.log(data.dados);
+
+                $("#modal-cadastro").modal("show");
+            }
         },
         error: function(error) {
             console.log(error);
         }
     });
-
-    $("#codigo_pro").val(codigo_pro);
-    $("#modal-cadastro").modal("show");
 });
 
-$(document).on("click", "#btn-deletar", function() {
+$(document).on("click", ".btn-deletar", function() {
     swal({
         title: "Deletar",
         text: "Deseja deletar esse produto?",
@@ -165,8 +166,8 @@ function montar_tabela(dados) {
             html = "";
 
             for(var i = 0; i < tam; i++) {
-                var alterar = "<button name='btn-alterar' id='btn-alterar' class='btn btn-simple btn-success btn-icon like' rel='tooltip' data-original-title='Alterar' data-codigo='" + dados[i].codigo_pro + "' style='float: left;margin-right: 3px;padding: 5px;display: block;'><i class='material-icons'>create</i></button>";
-                var deletar = "<button name='btn-alterar' id='btn-alterar' class='btn btn-simple btn-danger btn-icon like' rel='tooltip' data-original-title='Deletar' data-codigo='" + dados[i].codigo_pro + "' style='float: left;margin-right: 3px;padding: 5px;display: block;'><i class='material-icons'>close</i></button>";
+                var alterar = "<button name='btn-alterar' class='btn btn-simple btn-success btn-icon btn-alterar like' rel='tooltip' data-original-title='Alterar' data-codigo='" + dados[i].codigo_pro + "' style='float: left;margin-right: 3px;padding: 5px;display: block;'><i class='material-icons'>create</i></button>";
+                var deletar = "<button name='btn-deletar' class='btn btn-simple btn-danger btn-icon btn-deletar like' rel='tooltip' data-original-title='Deletar' data-codigo='" + dados[i].codigo_pro + "' style='float: left;margin-right: 3px;padding: 5px;display: block;'><i class='material-icons'>close</i></button>";
                 
                 var acoes = alterar + deletar;
 
